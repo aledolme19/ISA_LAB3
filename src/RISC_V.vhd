@@ -8,14 +8,12 @@ use ieee.numeric_std.all;
 
 entity RISC_V is
     port(
- 
+        clk : in std_logic
     );
 end entity RISC_V;
 
 architecture BEHAVIORAL of RISC_V is
 
 begin
-
-
 
 end BEHAVIORAL;
