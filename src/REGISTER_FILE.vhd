@@ -6,12 +6,13 @@ entity REGISTER_FILE is
 	port(
 		RF_IN_CLK        : in  std_logic;
 		RF_IN_RST_N      : in  std_logic;
-		RF_IN_READ_RS1   : in  std_logic_vector(4 downto 0); -- read enable for RS1
-		RF_IN_READ_RS2   : in  std_logic_vector(4 downto 0); -- read enable for RS2
-		RF_IN_WRITE_RD   : in  std_logic_vector(4 downto 0); -- write enable for RD
+		RF_IN_REGWRITE   : in  std_logic;
+		RF_IN_WRITE_RD   : in  std_logic_vector(4 downto 0); -- pointer to RD
 		RF_IN_WRITE_DATA : in  std_logic_vector(31 downto 0); -- data to be written to RD
-		RF_OUT_RS1       : out std_logic_vector(31 downto 0); -- data in RS1 to be read
-		RF_OUT_RS2       : out std_logic_vector(31 downto 0) -- data in RS1 to be read
+		RF_IN_READ_RS1   : in  std_logic_vector(4 downto 0); -- pointer to RS1
+		RF_IN_READ_RS2   : in  std_logic_vector(4 downto 0); -- pointer to RS2
+		RF_OUT_RS1       : out std_logic_vector(31 downto 0); -- data to be read from RS1
+		RF_OUT_RS2       : out std_logic_vector(31 downto 0) -- data to be read from RS2
 	);
 end entity REGISTER_FILE;
 
@@ -28,18 +29,24 @@ architecture RTL of REGISTER_FILE is
 		);
 	end component reg_en_rst_n;
 
-	type matrix is array (natural range <>) of std_logic_vector;
-	signal REG_OUT      : matrix(31 downto 0)(31 downto 0);
+	type matrix is array (31 downto 0) of std_logic_vector(31 downto 0);
+	signal REG_OUT      : matrix;
 	signal WRITE_EN_DEC : std_logic_vector(31 downto 0);
 
 begin
 
-	write_en_decoder : process(RF_IN_WRITE_RD) is
+	write_en_decoder : process(RF_IN_REGWRITE, RF_IN_WRITE_RD) is
 		variable index_write : natural;
 	begin
-		index_write               := to_integer(unsigned(RF_IN_WRITE_RD));
-		WRITE_EN_DEC(index_write) <= '1';
-		WRITE_EN_DEC              <= (others => '0');
+		if RF_IN_REGWRITE = '1' then
+			index_write                             := to_integer(unsigned(RF_IN_WRITE_RD));
+			WRITE_EN_DEC(index_write)               <= '1';
+			WRITE_EN_DEC(31 downto index_write + 1) <= (31 downto index_write + 1 => '0');
+			WRITE_EN_DEC(index_write - 1 downto 0)  <= (index_write - 1 downto 0 => '0');
+		else
+			WRITE_EN_DEC <= (31 downto 0 => '0');
+		end if;
+
 	end process write_en_decoder;
 
 	-- THE FIRST REGISTER IS READ-ONLY FIXED AT 0
