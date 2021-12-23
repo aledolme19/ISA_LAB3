@@ -3,64 +3,93 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity FETCH_UNIT is
-	port(
-		FETCH_UNIT_in_clk         : in std_logic;
-		FETCH_UNIT_in_jump        : in std_logic;
-		FETCH_UNIT_in_PCscr       : in std_logic;
-		FETCH_UNIT_in_jump_value  : in std_logic_vector(31 downto 0);
-		FETCH_UNIT_in_PCscr_value : in std_logic_vector(31 downto 0)
-	);
+    port(
+        FETCH_UNIT_in_clk         : in std_logic;
+        FETCH_UNIT_in_jump        : in std_logic;
+        FETCH_UNIT_in_PCscr       : in std_logic;
+        FETCH_UNIT_in_jump_value  : in std_logic_vector(31 downto 0);
+        FETCH_UNIT_in_PCscr_value : in std_logic_vector(31 downto 0);
+        FETCH_UNIT_in_Hazard_control : in std_logic;
+        FETCH_UNIT_out_next_PC: out std_logic_vector(31 downto 0);
+        FETCH_UNIT_out_current_PC: out std_logic_vector(31 downto 0);
+        FETCH_UNIT_out_instructions: out std_logic_vector(31 downto 0)
+    );
 end entity FETCH_UNIT;
 
 architecture BEHAVIORAL of FETCH_UNIT is
 
-	------COMPONENTS--------------------------------------------------------------------
-	component PC
-		port(
-			PC_input  : in  std_logic_vector(31 downto 0);
-			PC_in_clk : in  std_logic;
-			PC_output : out std_logic_vector(31 downto 0)
-		);
-	end component PC;
+    ------COMPONENTS--------------------------------------------------------------------
+    component PC
+        port(
+            PC_input  : in  std_logic_vector(31 downto 0);
+            PC_in_clk : in  std_logic;
+            PC_output : out std_logic_vector(31 downto 0)
+        );
+    end component PC;
 
-	component bN_3to1mux
-		generic(N : integer := 32);
-		port(
-			X, Y, Z : in  std_logic_vector(N - 1 downto 0);
-			S       : in  std_logic_vector(1 downto 0);
-			OUTPUT  : out std_logic_vector(N - 1 downto 0)
-		);
-	end component bN_3to1mux;
+    component ADDER2_NBIT
+        generic(N : positive := 32);
+        port(
+            ADDER_IN_A     : in  std_logic_vector(N - 1 downto 0);
+            ADDER_IN_B     : in  std_logic_vector(N - 1 downto 0);
+            ADDER_IN_CARRY : in  std_logic;
+            ADDER_OUT_S    : out std_logic_vector(N - 1 downto 0)
+        );
+    end component ADDER2_NBIT;
 
-	--------SIGNALS------------------------------------------------------------------------
-	signal PC_ADD       : std_logic_vector(31 downto 0);
-	signal ADD_MUX_MEM  : std_logic_vector(31 downto 0);
-	signal MUX_PC       : std_logic_vector(31 downto 0);
-	signal MUX_selector : std_logic_vector(1 downto 0);
+    component MUX_PC
+        port(
+            MUX_PC_in_PC_new    : in  std_logic_vector(31 downto 0);
+            MUX_PC_in_PC_Branch : in  std_logic_vector(31 downto 0);
+            MUX_PC_in_PC_Jump   : in  std_logic_vector(31 downto 0);
+            MUX_PC_in_sel       : in  std_logic_vector(1 downto 0);
+            MUX_PC_out          : out std_logic_vector(31 downto 0)
+        );
+    end component MUX_PC;
+
+    --------SIGNALS------------------------------------------------------------------------
+    signal PC_ADD       : std_logic_vector(31 downto 0);
+    signal ADD_MUX_MEM  : std_logic_vector(31 downto 0);
+    signal MUXPC_PC       : std_logic_vector(31 downto 0);
+    signal MUX_selector : std_logic_vector(1 downto 0);
+    signal ADD_MUX : std_logic_vector(31 downto 0);
 
 begin
 
-	i_PC : PC
-		port map(
-			PC_input  => MUX_PC,
-			PC_in_clk => FETCH_UNIT_in_clk,
-			PC_output => PC_ADD
-		);
+    i_PC : PC
+        port map(
+            PC_input  => MUXPC_PC,
+            PC_in_clk => FETCH_UNIT_in_clk,
+            PC_output => PC_ADD
+        );
 
-	i_selector : MUX_selector <= FETCH_UNIT_in_PCscr & FETCH_UNIT_in_jump;
+    i_selector : MUX_selector <= FETCH_UNIT_in_PCscr & FETCH_UNIT_in_jump;
 
-	ADDER HERE!!!
+    i_ADDER1 : ADDER2_NBIT
+        generic map (N=>32)
+        port map(
+            ADDER_IN_A   => PC_ADD,
+            ADDER_IN_B   => "00000000000000000000000000000010",
+            ADDER_IN_CARRY => '0',
+            ADDER_OUT_S  => ADD_MUX
+        );
 
-	i_MUX : bN_3to1mux
-		generic map(
-			N => 32
-		)
-		port map(
-			X      => ADD_MUX_MEM,
-			Y      => FETCH_UNIT_in_jump_value,
-			Z      => FETCH_UNIT_in_PCscr_value,
-			S      => MUX_selector,
-			OUTPUT => MUX_PC
-		);
+
+    MUX_selector <= FETCH_UNIT_in_PCscr & FETCH_UNIT_in_jump;
+
+    i_MUXPC: MUX_PC
+        port map(
+            MUX_PC_in_PC_new    => ADD_MUX,
+            MUX_PC_in_PC_Branch => FETCH_UNIT_in_PCscr_value,
+            MUX_PC_in_PC_Jump   => FETCH_UNIT_in_jump_value,
+            MUX_PC_in_sel       => MUX_selector,
+            MUX_PC_out          => MUXPC_PC
+        );
+
+     -------------------------MISSING INSTRUCTION MEMORYYYYYYYYYYYYYYYYYYYYYYYYYYY------------------------------
+
+    -----------------------OUTPUT-------------------------------------
+    FETCH_UNIT_out_current_PC <= PC_ADD;
+    FETCH_UNIT_out_next_PC<= ADD_MUX;
 
 end architecture BEHAVIORAL;

@@ -8,7 +8,7 @@ use ieee.numeric_std.all;
 
 entity CONTROL_UNIT is
 	port(
-		CU_IN_OPCODE    : in  std_logic_vector(5 downto 0);
+		CU_IN_OPCODE    : in  std_logic_vector(6 downto 0);
 		CU_OUT_Branch   : out std_logic;
 		CU_OUT_MemRead  : out std_logic;
 		CU_OUT_ALUOp    : out std_logic_vector(1 downto 0);
