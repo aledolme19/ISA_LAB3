@@ -24,9 +24,13 @@ end ADDER2_NBIT;
 
 architecture BEHAVIORAL of ADDER2_NBIT is
 
+	signal CARRY_NBIT : std_logic_vector(N - 1 downto 0);
+
 begin
 
-	ADDER_OUT_S <= std_logic_vector(signed(ADDER_IN_A) + signed(ADDER_IN_B) + signed('0' & ADDER_IN_CARRY));
+	CARRY_NBIT <= (N - 1 downto 1 => '0') & ADDER_IN_CARRY;
+
+	ADDER_OUT_S <= std_logic_vector(signed(ADDER_IN_A) + signed(ADDER_IN_B) + signed(CARRY_NBIT));
 
 end BEHAVIORAL;
 

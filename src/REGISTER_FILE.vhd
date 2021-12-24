@@ -47,7 +47,7 @@ begin
 	begin
 		if RF_IN_REGWRITE = '1' then
 			index_write               := to_integer(unsigned(RF_IN_WRITE_RD));
-			WRITE_EN_DEC              <= ((locations - 1 downto 0) => '0');
+			WRITE_EN_DEC              <= (locations - 1 downto 0 => '0');
 			WRITE_EN_DEC(index_write) <= '1';
 		else
 			WRITE_EN_DEC <= (locations - 1 downto 0 => '0');

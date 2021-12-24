@@ -14,7 +14,7 @@ entity DATA_MEMORY is
 		DM_IN_MEMWRITE : in  std_logic;
 		DM_IN_DATA     : in  std_logic_vector(width - 1 downto 0);
 		DM_IN_ADDRESS  : in  std_logic_vector(address_bits - 1 downto 0);
-		DM_OUT_DATA    : out std_logic_vector(width - 1 downto 0)
+		DM_OUT         : out std_logic_vector(width - 1 downto 0)
 	);
 end entity DATA_MEMORY;
 
@@ -31,12 +31,24 @@ architecture BEHAVIORAL of DATA_MEMORY is
 		);
 	end component reg_en_rst_n;
 
+	component latch_en_rst_n
+		generic(N : positive := 32);
+		port(
+			D     : in  std_logic_vector(N - 1 downto 0);
+			en    : in  std_logic;
+			rst_n : in  std_logic;
+			Q     : out std_logic_vector(N - 1 downto 0)
+		);
+	end component latch_en_rst_n;
+
 	-- number of locations (rows)
 	constant locations : positive := 2 ** address_bits;
 
 	type matrix is array (locations - 1 downto 0) of std_logic_vector(width - 1 downto 0);
 	signal REG_OUT      : matrix;
 	signal WRITE_EN_DEC : std_logic_vector(locations - 1 downto 0);
+	signal LATCH_EN     : std_logic;
+	signal LATCH_IN     : std_logic_vector(width - 1 downto 0);
 
 begin
 
@@ -45,7 +57,7 @@ begin
 	begin
 		if DM_IN_MEMWRITE = '1' then
 			index_write               := to_integer(unsigned(DM_IN_ADDRESS));
-			WRITE_EN_DEC              <= ((locations - 1 downto 0) => '0');
+			WRITE_EN_DEC              <= (locations - 1 downto 0 => '0');
 			WRITE_EN_DEC(index_write) <= '1';
 		else
 			WRITE_EN_DEC <= (locations - 1 downto 0 => '0');
@@ -68,18 +80,31 @@ begin
 			);
 	end generate register_file_gen;
 
-	-- OUTPUT MUXES
-	-- A latch will be synthesized here because if MEMREAD=0 the previous value of DM_OUT_DATA is preserved.
+	-- OUTPUT MUX + latch
 	-- In a real data memory, it is useful to avoid useless read because the power dissipated to perform a reading operation is very high (e.g. SRAM).
 	-- In this case there is not a big advantage because we should only change the MUX status to read since the memory is implemented through flip-flops,
-	-- but we prefer to do in this way in order to simulate the behavior of a real memory. 
-	mux_read : process(DM_IN_MEMREAD, DM_IN_ADDRESS, REG_OUT) is
+	-- but we prefer to use a latch in order to make the memory "more real", even though not in all the memories this is the behavior, but it depends
+	-- on the technology, specifications and so on.
+	-- For the same reason, we prefer to not allow a concurrent read/write, because in common memories it is usually not possible.
+	-- We give priority to the writing.
+	mux_read : process(DM_IN_ADDRESS, REG_OUT) is
 		variable index_read : natural;
 	begin
-		if DM_IN_MEMREAD = '1' then
-			index_read  := to_integer(unsigned(DM_IN_ADDRESS));
-			DM_OUT_DATA <= REG_OUT(index_read);
-		end if;
+		index_read := to_integer(unsigned(DM_IN_ADDRESS));
+		LATCH_IN   <= REG_OUT(index_read);
 	end process mux_read;
+
+	LATCH_EN <= DM_IN_MEMREAD and not (DM_IN_MEMWRITE);
+
+	output_latch : component latch_en_rst_n
+		generic map(
+			N => width
+		)
+		port map(
+			D     => LATCH_IN,
+			en    => LATCH_EN,
+			rst_n => DM_IN_RST_N,
+			Q     => DM_OUT
+		);
 
 end architecture BEHAVIORAL;

@@ -8,16 +8,20 @@ end entity tb_REGISTER_FILE;
 architecture testbench of tb_REGISTER_FILE is
 
 	component REGISTER_FILE
+		generic(
+			width        : positive := 32;
+			address_bits : positive := 5
+		);
 		port(
 			RF_IN_CLK        : in  std_logic;
 			RF_IN_RST_N      : in  std_logic;
 			RF_IN_REGWRITE   : in  std_logic;
-			RF_IN_WRITE_RD   : in  std_logic_vector(4 downto 0);
-			RF_IN_WRITE_DATA : in  std_logic_vector(31 downto 0);
-			RF_IN_READ_RS1   : in  std_logic_vector(4 downto 0);
-			RF_IN_READ_RS2   : in  std_logic_vector(4 downto 0);
-			RF_OUT_RS1       : out std_logic_vector(31 downto 0);
-			RF_OUT_RS2       : out std_logic_vector(31 downto 0)
+			RF_IN_WRITE_RD   : in  std_logic_vector(address_bits - 1 downto 0);
+			RF_IN_WRITE_DATA : in  std_logic_vector(width - 1 downto 0);
+			RF_IN_READ_RS1   : in  std_logic_vector(address_bits - 1 downto 0);
+			RF_IN_READ_RS2   : in  std_logic_vector(address_bits - 1 downto 0);
+			RF_OUT_RS1       : out std_logic_vector(width - 1 downto 0);
+			RF_OUT_RS2       : out std_logic_vector(width - 1 downto 0)
 		);
 	end component REGISTER_FILE;
 
@@ -43,6 +47,10 @@ begin
 	end process clock_driver;
 
 	i_RF : component REGISTER_FILE
+		generic map(
+			width        => 32,
+			address_bits => 5
+		)
 		port map(
 			RF_IN_CLK        => CLK,
 			RF_IN_RST_N      => RST_N,
@@ -70,7 +78,7 @@ begin
 		REGWRITE <= '1';
 		for i in 0 to 31 loop
 			POINTER_RD <= std_logic_vector(to_unsigned(i, POINTER_RD'length));
-			DATA_WRITE <= std_logic_vector(to_unsigned(31 - i, DATA_WRITE'length));
+			DATA_WRITE <= std_logic_vector(to_unsigned(100 - i, DATA_WRITE'length));
 			wait for 10 ns;
 		end loop;
 

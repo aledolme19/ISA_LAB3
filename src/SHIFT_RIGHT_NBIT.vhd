@@ -17,7 +17,7 @@ begin
 
 	shift_process : process(SHIFT_IN_OPERAND, SHIFT_IN_SHIFT_AMOUNT) is
 	begin
-		SHIFT_OUT <= std_logic_vector(shift_left(unsigned(SHIFT_IN_OPERAND), to_integer(unsigned(SHIFT_IN_SHIFT_AMOUNT))));
+		SHIFT_OUT <= std_logic_vector(shift_right(signed(SHIFT_IN_OPERAND), to_integer(unsigned(SHIFT_IN_SHIFT_AMOUNT))));
 	end process shift_process;
 
 end BEHAVIORAL;

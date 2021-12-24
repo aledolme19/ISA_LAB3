@@ -28,7 +28,7 @@ begin
 	i_BRU_unit : process(CU_IN_OPCODE)
 	begin
 		case CU_IN_OPCODE is
-			--ADD
+			--ADD / XOR / SLT
 			when "0110011" =>
 				CU_OUT_Branch   <= '0';
 				CU_OUT_MemRead  <= '0';
@@ -40,31 +40,7 @@ begin
 				CU_OUT_MemToReg <= "10";
 				CU_OUT_Lui      <= '0';
 				CU_OUT_Auipc    <= '0';
-			--ADDI / ANDI
-			when "0010011" =>
-				CU_OUT_Branch   <= '0';
-				CU_OUT_MemRead  <= '0';
-				CU_OUT_ALUOp    <= "00";
-				CU_OUT_MemWrite <= '0';
-				CU_OUT_ALUSrc   <= '1';
-				CU_OUT_RegWrite <= '1';
-				CU_OUT_Jump     <= '0';
-				CU_OUT_MemToReg <= "10";
-				CU_OUT_Lui      <= '0';
-				CU_OUT_Auipc    <= '0';
-			--XOR
-			when "0110011" =>
-				CU_OUT_Branch   <= '0';
-				CU_OUT_MemRead  <= '0';
-				CU_OUT_ALUOp    <= "10";
-				CU_OUT_MemWrite <= '0';
-				CU_OUT_ALUSrc   <= '0';
-				CU_OUT_RegWrite <= '1';
-				CU_OUT_Jump     <= '0';
-				CU_OUT_MemToReg <= "10";
-				CU_OUT_Lui      <= '0';
-				CU_OUT_Auipc    <= '0';
-			--SRAI
+			--ADDI / ANDI / SRAI
 			when "0010011" =>
 				CU_OUT_Branch   <= '0';
 				CU_OUT_MemRead  <= '0';
@@ -86,18 +62,6 @@ begin
 				CU_OUT_RegWrite <= '0';
 				CU_OUT_Jump     <= '0';
 				CU_OUT_MemToReg <= "--";
-				CU_OUT_Lui      <= '0';
-				CU_OUT_Auipc    <= '0';
-			--SLT
-			when "0110011" =>
-				CU_OUT_Branch   <= '0';
-				CU_OUT_MemRead  <= '0';
-				CU_OUT_ALUOp    <= "10";
-				CU_OUT_MemWrite <= '0';
-				CU_OUT_ALUSrc   <= '0';
-				CU_OUT_RegWrite <= '1';
-				CU_OUT_Jump     <= '0';
-				CU_OUT_MemToReg <= "10";
 				CU_OUT_Lui      <= '0';
 				CU_OUT_Auipc    <= '0';
 			--LW
