@@ -143,7 +143,7 @@ begin
 		OPERAND_2 <= std_logic_vector(to_signed(16161, OPERAND_2'length));
 		wait for 10 ns;
 
-		-- slt: 158178 >< 2717723
+		-- slt: 158178 <> 2717723
 		OPCODE    <= "0110011";
 		FUNCT3    <= "010";
 		OPERAND_1 <= std_logic_vector(to_signed(158178, OPERAND_1'length));
