@@ -23,6 +23,8 @@ architecture BEHAVIORAL of FETCH_UNIT is
         port(
             PC_input  : in  std_logic_vector(31 downto 0);
             PC_in_clk : in  std_logic;
+            PC_in_en  : in  std_logic;
+            PC_in_rst : in  std_logic;
             PC_output : out std_logic_vector(31 downto 0)
         );
     end component PC;
@@ -56,8 +58,12 @@ architecture BEHAVIORAL of FETCH_UNIT is
 
 begin
 
+
+    PC ENABLE E RESET, COME GESTIRLI!
     i_PC : PC
         port map(
+            PC_in_en => PC_in_en,
+            PC_in_rst => PC_in_rst,
             PC_input  => MUXPC_PC,
             PC_in_clk => FETCH_UNIT_in_clk,
             PC_output => PC_ADD

@@ -88,12 +88,17 @@ architecture BEHAVIORAL of DECODING_UNIT is
 
     component HAZARD_UNIT
         port(
-            HU_IN_IF_ID_RS1     : in  std_logic_vector(4 downto 0);
-            HU_IN_IF_ID_RS2     : in  std_logic_vector(4 downto 0);
-            HU_IN_ID_EX_MEMREAD : in  std_logic;
-            HU_IN_ID_EX_RD      : in  std_logic_vector(4 downto 0);
-            HU_OUT_IF_ID_WRITE  : out std_logic;
-            HU_OUT_PC_WRITE     : out std_logic
+            HU_IN_IF_ID_RS1          : in  std_logic_vector(4 downto 0);
+            HU_IN_IF_ID_RS2          : in  std_logic_vector(4 downto 0);
+            HU_IN_ID_EX_MEMREAD      : in  std_logic;
+            HU_IN_ID_EX_RD           : in  std_logic_vector(4 downto 0);
+            HU_IN_IF_ID_BRANCH       : in  std_logic;
+            HU_IN_ID_EX_BRANCH       : in  std_logic;
+            HU_IN_EX_MEM_BRANCH      : in  std_logic;
+            HU_IN_ID_EX_JUMP         : in  std_logic;
+            HU_IN_MEM_WB_BRANCHTAKEN : in  std_logic;
+            HU_OUT_IF_ID_PC_WRITE    : out std_logic;
+            HU_OUT_NOP_SEL           : out std_logic
         );
     end component HAZARD_UNIT;
 
@@ -198,13 +203,30 @@ begin
             N => 32
         )
         port map(
-            ADDER_IN_A     => immediate_shifted,
+            ADDER_IN_A     => immediate_shifted(31 downto 0),
             ADDER_IN_B     => DECODING_UNIT_in_current_PC,
             ADDER_IN_CARRY => '0',
             ADDER_OUT_S    => DECODING_UNIT_out_Adder2
         );
     
+    i_HAZARD_UNIT: HAZARD_UNIT
+        port map(
+            HU_IN_IF_ID_RS1          => RS1,
+            HU_IN_IF_ID_RS2          => RS2,
+            HU_IN_ID_EX_MEMREAD      => DECODING_UNIT_in_ID_EX_MemRead,
+            HU_IN_ID_EX_RD           => DECODING_UNIT_in_ID_EX_RD,
+            HU_IN_IF_ID_BRANCH       => out_MUX_Control(0),
+            HU_IN_ID_EX_BRANCH       => HU_IN_ID_EX_BRANCH,
+            HU_IN_EX_MEM_BRANCH      => HU_IN_EX_MEM_BRANCH,
+            HU_IN_ID_EX_JUMP         => HU_IN_ID_EX_JUMP,
+            HU_IN_MEM_WB_BRANCHTAKEN => HU_IN_MEM_WB_BRANCHTAKEN,
+            HU_OUT_IF_ID_PC_WRITE    => HU_OUT_IF_ID_PC_WRITE,
+            HU_OUT_NOP_SEL           => HU_OUT_NOP_SEL
+        );
     
+    
+
+
 
 
     ----OUTPUT--------------------------
