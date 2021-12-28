@@ -24,17 +24,17 @@ architecture RTL of MEMORY_UNIT is
 
     component DATA_MEMORY
         generic(
-            width        : positive := 32;
-            address_bits : positive := 5
+            data_length        : positive := 32;
+            address_length : positive := 5
         );
         port(
             DM_IN_CLK      : in  std_logic;
             DM_IN_RST_N    : in  std_logic;
             DM_IN_MEMREAD  : in  std_logic;
             DM_IN_MEMWRITE : in  std_logic;
-            DM_IN_DATA     : in  std_logic_vector(width - 1 downto 0);
-            DM_IN_ADDRESS  : in  std_logic_vector(address_bits - 1 downto 0);
-            DM_OUT         : out std_logic_vector(width - 1 downto 0)
+            DM_IN_DATA     : in  std_logic_vector(data_length - 1 downto 0);
+            DM_IN_ADDRESS  : in  std_logic_vector(address_length - 1 downto 0);
+            DM_OUT         : out std_logic_vector(data_length - 1 downto 0)
         );
     end component DATA_MEMORY;
 
@@ -48,8 +48,8 @@ begin
     
         i_DATA_MEMORY: DATA_MEMORY
             generic map(
-                width        => 32,
-                address_bits => 32
+                data_length        => 32,
+                address_length => 32
             )
             port map(
                 DM_IN_CLK      => MEMORY_UNIT_in_CLK,

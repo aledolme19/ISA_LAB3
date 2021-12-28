@@ -4,19 +4,19 @@ use ieee.numeric_std.all;
 
 entity REGISTER_FILE is
 	generic(
-		width        : positive := 32;  -- length of each row
-		address_bits : positive := 5    -- address bits = log2(number_of_rows)
+		data_length    : positive := 32; -- length of each row
+		address_length : positive := 5  -- address bits = log2(number_of_rows)
 	);
 	port(
 		RF_IN_CLK        : in  std_logic;
 		RF_IN_RST_N      : in  std_logic;
 		RF_IN_REGWRITE   : in  std_logic;
-		RF_IN_WRITE_RD   : in  std_logic_vector(address_bits - 1 downto 0); -- pointer to RD
-		RF_IN_WRITE_DATA : in  std_logic_vector(width - 1 downto 0); -- data to be written to RD
-		RF_IN_READ_RS1   : in  std_logic_vector(address_bits - 1 downto 0); -- pointer to RS1
-		RF_IN_READ_RS2   : in  std_logic_vector(address_bits - 1 downto 0); -- pointer to RS2
-		RF_OUT_RS1       : out std_logic_vector(width - 1 downto 0); -- data to be read from RS1
-		RF_OUT_RS2       : out std_logic_vector(width - 1 downto 0) -- data to be read from RS2
+		RF_IN_WRITE_RD   : in  std_logic_vector(address_length - 1 downto 0); -- pointer to RD
+		RF_IN_WRITE_DATA : in  std_logic_vector(data_length - 1 downto 0); -- data to be written to RD
+		RF_IN_READ_RS1   : in  std_logic_vector(address_length - 1 downto 0); -- pointer to RS1
+		RF_IN_READ_RS2   : in  std_logic_vector(address_length - 1 downto 0); -- pointer to RS2
+		RF_OUT_RS1       : out std_logic_vector(data_length - 1 downto 0); -- data to be read from RS1
+		RF_OUT_RS2       : out std_logic_vector(data_length - 1 downto 0) -- data to be read from RS2
 	);
 end entity REGISTER_FILE;
 
@@ -34,9 +34,9 @@ architecture behavioral of REGISTER_FILE is
 	end component reg_en_rst_n;
 
 	-- number of locations (rows)
-	constant locations : positive := 2 ** address_bits;
+	constant locations : positive := 2 ** address_length;
 
-	type matrix is array (locations - 1 downto 0) of std_logic_vector(width - 1 downto 0);
+	type matrix is array (locations - 1 downto 0) of std_logic_vector(data_length - 1 downto 0);
 	signal REG_OUT      : matrix;
 	signal WRITE_EN_DEC : std_logic_vector(locations - 1 downto 0);
 
@@ -61,7 +61,7 @@ begin
 	register_file_gen : for i in 1 to locations - 1 generate
 		REG : component reg_en_rst_n
 			generic map(
-				N => width
+				N => data_length
 			)
 			port map(
 				D     => RF_IN_WRITE_DATA,

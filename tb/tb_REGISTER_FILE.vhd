@@ -9,19 +9,19 @@ architecture testbench of tb_REGISTER_FILE is
 
 	component REGISTER_FILE
 		generic(
-			width        : positive := 32;
-			address_bits : positive := 5
+			data_length        : positive := 32;
+			address_length : positive := 5
 		);
 		port(
 			RF_IN_CLK        : in  std_logic;
 			RF_IN_RST_N      : in  std_logic;
 			RF_IN_REGWRITE   : in  std_logic;
-			RF_IN_WRITE_RD   : in  std_logic_vector(address_bits - 1 downto 0);
-			RF_IN_WRITE_DATA : in  std_logic_vector(width - 1 downto 0);
-			RF_IN_READ_RS1   : in  std_logic_vector(address_bits - 1 downto 0);
-			RF_IN_READ_RS2   : in  std_logic_vector(address_bits - 1 downto 0);
-			RF_OUT_RS1       : out std_logic_vector(width - 1 downto 0);
-			RF_OUT_RS2       : out std_logic_vector(width - 1 downto 0)
+			RF_IN_WRITE_RD   : in  std_logic_vector(address_length - 1 downto 0);
+			RF_IN_WRITE_DATA : in  std_logic_vector(data_length - 1 downto 0);
+			RF_IN_READ_RS1   : in  std_logic_vector(address_length - 1 downto 0);
+			RF_IN_READ_RS2   : in  std_logic_vector(address_length - 1 downto 0);
+			RF_OUT_RS1       : out std_logic_vector(data_length - 1 downto 0);
+			RF_OUT_RS2       : out std_logic_vector(data_length - 1 downto 0)
 		);
 	end component REGISTER_FILE;
 
@@ -48,8 +48,8 @@ begin
 
 	i_RF : component REGISTER_FILE
 		generic map(
-			width        => 32,
-			address_bits => 5
+			data_length        => 32,
+			address_length => 5
 		)
 		port map(
 			RF_IN_CLK        => CLK,
