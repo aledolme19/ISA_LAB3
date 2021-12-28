@@ -44,7 +44,7 @@ architecture BEHAVIORAL of DATA_MEMORY is
 	-- number of locations (rows)
 	constant locations : positive := 2 ** address_length;
 
-	type matrix is array (locations - 1 downto 0) of std_logic_vector(data_length - 1 downto 0);
+	type matrix is array (0 to locations - 1) of std_logic_vector(data_length - 1 downto 0);
 	signal REG_OUT      : matrix;
 	signal WRITE_EN_DEC : std_logic_vector(locations - 1 downto 0);
 	signal LATCH_EN     : std_logic;
