@@ -8,7 +8,8 @@ use ieee.numeric_std.all;
 
 entity RISC_V is
     port(
-        RISC_V_clk : in std_logic
+        RISC_V_clk : in std_logic;
+        RISC_V_rst_n : in std_logic
     );
 end entity RISC_V;
 
@@ -19,6 +20,7 @@ architecture BEHAVIORAL of RISC_V is
     component FETCH_UNIT
         port(
             FETCH_UNIT_in_clk            : in  std_logic;
+            FETCH_UNIT_in_rst_n          : in  std_logic;
             FETCH_UNIT_in_jump           : in  std_logic;
             FETCH_UNIT_in_PCscr          : in  std_logic;
             FETCH_UNIT_in_jump_value     : in  std_logic_vector(31 downto 0);
@@ -48,11 +50,16 @@ architecture BEHAVIORAL of RISC_V is
     component DECODING_UNIT
         port(
             DECODING_UNIT_in_CLK                                                                                                                                                                                          : in  std_logic;
+            DECODING_UNIT_in_rst_n                                                                                                                                                                                        : in  std_logic;
             DECODING_UNIT_in_MEM_WB_RegWrite                                                                                                                                                                              : in  std_logic;
             DECODING_UNIT_in_MEM_WB_WriteData                                                                                                                                                                             : in  std_logic_vector(31 downto 0);
             DECODING_UNIT_in_MEM_WB_RD                                                                                                                                                                                    : in  std_logic_vector(4 downto 0);
+            DECODING_UNIT_in_EX_MEM_Branch                                                                                                                                                                                : in  std_logic;
+            DECODING_UNIT_in_ID_EX_Branch                                                                                                                                                                                 : in  std_logic;
             DECODING_UNIT_in_ID_EX_RD                                                                                                                                                                                     : in  std_logic_vector(4 downto 0);
             DECODING_UNIT_in_ID_EX_MemRead                                                                                                                                                                                : in  std_logic;
+            DECODING_UNIT_in_ID_EX_Jump                                                                                                                                                                                   : in  std_logic;
+            DECODING_UNIT_in_MEM_WB_PCSrc                                                                                                                                                                                        : in  std_logic;
             DECODING_UNIT_in_INSTR                                                                                                                                                                                        : in  std_logic_vector(31 downto 0);
             DECODING_UNIT_in_next_PC                                                                                                                                                                                      : in  std_logic_vector(31 downto 0);
             DECODING_UNIT_in_current_PC                                                                                                                                                                                   : in  std_logic_vector(31 downto 0);
@@ -100,33 +107,34 @@ architecture BEHAVIORAL of RISC_V is
 
     component EXECUTION_UNIT
         port(
-            EXECUTION_UNIT_in_Adder2                                                                                                                                                                                      : in  std_logic_vector(31 downto 0);
             EXECUTION_UNIT_in_RS1, EXECUTION_UNIT_in_RS2                                                                                                                                                                  : in  std_logic_vector(4 downto 0);
             EXECUTION_UNIT_in_next_PC, EXECUTION_UNIT_in_current_PC                                                                                                                                                       : in  std_logic_vector(31 downto 0);
+            EXECUTION_UNIT_in_Adder2                                                                                                                                                                                      : in  std_logic_vector(31 downto 0);
             EXECUTION_UNIT_in_read_data1, EXECUTION_UNIT_in_read_data2                                                                                                                                                    : in  std_logic_vector(31 downto 0);
             EXECUTION_UNIT_in_LUI, EXECUTION_UNIT_in_RegWrite, EXECUTION_UNIT_in_MemRead, EXECUTION_UNIT_in_AUIPC, EXECUTION_UNIT_in_Branch, EXECUTION_UNIT_in_ALUScr, EXECUTION_UNIT_in_MemWrite, EXECUTION_UNIT_in_Jump : in  std_logic;
             EXECUTION_UNIT_in_ALUOp, EXECUTION_UNIT_in_MemtoReg                                                                                                                                                           : in  std_logic_vector(1 downto 0);
             EXECUTION_UNIT_in_Funct3                                                                                                                                                                                      : in  std_logic_vector(2 downto 0);
             EXECUTION_UNIT_in_Immediate                                                                                                                                                                                   : in  std_logic_vector(31 downto 0);
             EXECUTION_UNIT_in_RD                                                                                                                                                                                          : in  std_logic_vector(4 downto 0);
-            EXECUTION_UNIT_in_MEM_WB_Read_Data                                                                                                                                                                            : in  std_logic_vector(31 downto 0);
+            EXECUTION_UNIT_in_MEM_WB_MUX_WriteData                                                                                                                                                                        : in  std_logic_vector(31 downto 0);
             EXECUTION_UNIT_in_EX_MEM_ALU_result                                                                                                                                                                           : in  std_logic_vector(31 downto 0);
-            EXECUTION_UNIT_in_EX_MEM_Next_PC                                                                                                                                                                              : in  std_logic_vector(31 downto 0);
-            EXECUTION_UNIT_in_MEM_WB_Next_PC                                                                                                                                                                              : in  std_logic_vector(31 downto 0);
             EXECUTION_UNIT_in_EX_MEM_RD                                                                                                                                                                                   : in  std_logic_vector(4 downto 0);
             EXECUTION_UNIT_in_MEM_WB_RD                                                                                                                                                                                   : in  std_logic_vector(4 downto 0);
             EXECUTION_UNIT_in_EX_MEM_RegWrite                                                                                                                                                                             : in  std_logic;
             EXECUTION_UNIT_in_MEM_WB_RegWrite                                                                                                                                                                             : in  std_logic;
-            EXECUTION_UNIT_in_EX_MEM_Jump                                                                                                                                                                                 : in  std_logic;
             EXECUTION_UNIT_in_MEM_WB_Jump                                                                                                                                                                                 : in  std_logic;
+            EXECUTION_UNIT_in_MEM_WB_Next_PC                                                                                                                                                                              : in  std_logic_vector(31 downto 0);
             EXECUTION_UNIT_out_Adder2                                                                                                                                                                                     : out std_logic_vector(31 downto 0);
             EXECUTION_UNIT_out_next_PC                                                                                                                                                                                    : out std_logic_vector(31 downto 0);
             EXECUTION_UNIT_out_ALU_zero                                                                                                                                                                                   : out std_logic;
             EXECUTION_UNIT_out_ALU_result                                                                                                                                                                                 : out std_logic_vector(31 downto 0);
-            EXECUTION_UNIT_out_RegWrite, EXECUTION_UNIT_out_Branch, EXECUTION_UNIT_out_MemWrite, EXECUTION_UNIT_out_Jump, EXECUTION_UNIT_out_MemRead                                                                      : out std_logic;
+            EXECUTION_UNIT_out_RegWrite                                                                                                                                                                                   : out std_logic;
+            EXECUTION_UNIT_out_Branch                                                                                                                                                                                     : out std_logic;
+            EXECUTION_UNIT_out_MemWrite, EXECUTION_UNIT_out_Jump                                                                                                                                                          : out std_logic;
+            EXECUTION_UNIT_out_MemRead                                                                                                                                                                                    : out std_logic;
             EXECUTION_UNIT_out_MemtoReg                                                                                                                                                                                   : out std_logic_vector(1 downto 0);
             EXECUTION_UNIT_out_RD                                                                                                                                                                                         : out std_logic_vector(4 downto 0);
-            EXECUTION_UNIT_out_MUX3_out                                                                                                                                                                                   : out std_logic_vector(31 downto 0)
+            EXECUTION_UNIT_out_RS2                                                                                                                                                                                        : out std_logic_vector(4 downto 0)
         );
     end component EXECUTION_UNIT;
     
@@ -290,15 +298,16 @@ begin
 
     i_FETCH_UNIT: FETCH_UNIT
         port map(
-            FETCH_UNIT_in_clk            => RISC_V_clk,
-            FETCH_UNIT_in_jump           => Jump_PIPE_II,
-            FETCH_UNIT_in_PCscr          => PCSrc,
-            FETCH_UNIT_in_jump_value     => Adder2_PIPE_II,
-            FETCH_UNIT_in_PCscr_value    => PIPE_III_Adder2,
+            FETCH_UNIT_in_clk => RISC_V_clk,
+            FETCH_UNIT_in_rst_n => RISC_V_rst_n,
+            FETCH_UNIT_in_jump => Jump_PIPE_II,
+            FETCH_UNIT_in_PCscr => PCSrc,
+            FETCH_UNIT_in_jump_value => Adder2_PIPE_II,
+            FETCH_UNIT_in_PCscr_value => PIPE_III_Adder2,
             FETCH_UNIT_in_Hazard_control => Hazard_Control_PC_ID_IF,
-            FETCH_UNIT_out_next_PC       => IF_next_PC_PIPE_I,
-            FETCH_UNIT_out_current_PC    => IF_current_PC_PIPE_I,
-            FETCH_UNIT_out_instructions  => IF_instruction_PIPE_I
+            FETCH_UNIT_out_next_PC => IF_next_PC_PIPE_I,
+            FETCH_UNIT_out_current_PC => IF_current_PC_PIPE_I,
+            FETCH_UNIT_out_instructions => IF_instruction_PIPE_I
         );
 
 
@@ -317,36 +326,41 @@ begin
 
     i_DECODING_UNIT: DECODING_UNIT
         port map(
-            DECODING_UNIT_in_CLK              => RISC_V_clk,
-            DECODING_UNIT_in_MEM_WB_RegWrite  => PIPE_IV_RegWrite,
+            DECODING_UNIT_in_CLK => RISC_V_clk,
+            DECODING_UNIT_in_rst_n => RISC_V_rst_n,
+            DECODING_UNIT_in_MEM_WB_RegWrite => PIPE_IV_RegWrite,
             DECODING_UNIT_in_MEM_WB_WriteData => WB_WriteData,
-            DECODING_UNIT_in_MEM_WB_RD        => PIPE_IV_RD,
-            DECODING_UNIT_in_ID_EX_RD         => PIPE_II_RD,
-            DECODING_UNIT_in_ID_EX_MemRead    => PIPE_II_MemRead,
-            DECODING_UNIT_in_INSTR            => PIPE_I_instruction,
-            DECODING_UNIT_in_next_PC          => PIPE_I_next_PC,
-            DECODING_UNIT_in_current_PC       => PIPE_I_current_PC,
-            DECODING_UNIT_out_Adder2          => Adder2_PIPE_II,
-            DECODING_UNIT_out_RS1             => RS1_PIPE_II,
-            DECODING_UNIT_out_RS2             => RS2_PIPE_II,
-            DECODING_UNIT_out_next_PC         => next_PC_PIPE_II,
-            DECODING_UNIT_out_current_PC      => current_PC_PIPE_II,
-            DECODING_UNIT_out_read_data1      => read_data1_PIPE_II,
-            DECODING_UNIT_out_read_data2      => read_data2_PIPE_II,
-            DECODING_UNIT_out_LUI             => LUI_PIPE_II,
-            DECODING_UNIT_out_RegWrite        => RegWrite_PIPE_II,
-            DECODING_UNIT_out_MemRead         => MemRead_PIPE_II,
-            DECODING_UNIT_out_AUIPC           => AUIPC_PIPE_II,
-            DECODING_UNIT_out_Branch          => Branch_PIPE_II,
-            DECODING_UNIT_out_ALUScr          => ALUScr_PIPE_II,
-            DECODING_UNIT_out_MemWrite        => MemWrite_PIPE_II,
-            DECODING_UNIT_out_Jump            => Jump_PIPE_II,
-            DECODING_UNIT_out_ALUOp           => ALUOp_PIPE_II,
-            DECODING_UNIT_out_MemtoReg        => MemtoReg_PIPE_II,
-            DECODING_UNIT_out_Funct3          => Funct3_PIPE_II,
-            DECODING_UNIT_out_Immediate       => Immediate_PIPE_II,
-            DECODING_UNIT_out_RD              => RD_PIPE_II,
-            DECODING_UNIT_out_Hazard_Control  => Hazard_Control_PC_ID_IF
+            DECODING_UNIT_in_MEM_WB_RD => PIPE_IV_RD,
+            DECODING_UNIT_in_EX_MEM_Branch => PIPE_III_Branch,
+            DECODING_UNIT_in_ID_EX_Branch => PIPE_II_Branch,
+            DECODING_UNIT_in_ID_EX_RD => PIPE_II_RD,
+            DECODING_UNIT_in_ID_EX_MemRead => PIPE_II_MemRead,
+            DECODING_UNIT_in_ID_EX_Jump => PIPE_II_Jump,
+            DECODING_UNIT_in_MEM_WB_PCSrc => DECODING_UNIT_in_PCSrc,
+            DECODING_UNIT_in_INSTR => PIPE_I_instruction,
+            DECODING_UNIT_in_next_PC => PIPE_I_next_PC,
+            DECODING_UNIT_in_current_PC => PIPE_I_current_PC,
+            DECODING_UNIT_out_Adder2 => Adder2_PIPE_II,
+            DECODING_UNIT_out_RS1 => RS1_PIPE_II,
+            DECODING_UNIT_out_RS2 => RS2_PIPE_II,
+            DECODING_UNIT_out_next_PC => next_PC_PIPE_II,
+            DECODING_UNIT_out_current_PC => current_PC_PIPE_II,
+            DECODING_UNIT_out_read_data1 => read_data1_PIPE_II,
+            DECODING_UNIT_out_read_data2 => read_data2_PIPE_II,
+            DECODING_UNIT_out_LUI => LUI_PIPE_II,
+            DECODING_UNIT_out_RegWrite => RegWrite_PIPE_II,
+            DECODING_UNIT_out_MemRead => MemRead_PIPE_II,
+            DECODING_UNIT_out_AUIPC => AUIPC_PIPE_II,
+            DECODING_UNIT_out_Branch => Branch_PIPE_II,
+            DECODING_UNIT_out_ALUScr => ALUScr_PIPE_II,
+            DECODING_UNIT_out_MemWrite => MemWrite_PIPE_II,
+            DECODING_UNIT_out_Jump => Jump_PIPE_II,
+            DECODING_UNIT_out_ALUOp => ALUOp_PIPE_II,
+            DECODING_UNIT_out_MemtoReg => MemtoReg_PIPE_II,
+            DECODING_UNIT_out_Funct3 => Funct3_PIPE_II,
+            DECODING_UNIT_out_Immediate => Immediate_PIPE_II,
+            DECODING_UNIT_out_RD => RD_PIPE_II,
+            DECODING_UNIT_out_Hazard_Control => Hazard_Control_PC_ID_IF
         );
 
 
@@ -399,38 +413,36 @@ begin
 
     i_EXECUTION_UNIT: EXECUTION_UNIT
         port map(
-            EXECUTION_UNIT_in_Adder2 => PIPE_II_Adder2,
-            EXECUTION_UNIT_in_RS1 => PIPE_II_RS1,
-            EXECUTION_UNIT_in_RS2 => PIPE_II_RS2,
-            EXECUTION_UNIT_in_next_PC => PIPE_II_next_PC,
-            EXECUTION_UNIT_in_current_PC => PIPE_II_current_PC,
-            EXECUTION_UNIT_in_read_data1 => PIPE_II_read_data1,
-            EXECUTION_UNIT_in_read_data2 => PIPE_II_read_data2,
-            EXECUTION_UNIT_in_LUI => PIPE_II_LUI,
-            EXECUTION_UNIT_in_RegWrite => PIPE_II_RegWrite,
-            EXECUTION_UNIT_in_MemRead => PIPE_II_MemRead,
-            EXECUTION_UNIT_in_AUIPC => PIPE_II_AUIPC,
-            EXECUTION_UNIT_in_Branch => PIPE_II_Branch,
-            EXECUTION_UNIT_in_ALUScr => PIPE_II_ALUScr,
-            EXECUTION_UNIT_in_MemWrite => PIPE_II_MemWrite,
-            EXECUTION_UNIT_in_Jump => PIPE_II_Jump,
-            EXECUTION_UNIT_in_ALUOp => PIPE_II_ALUOp,
-            EXECUTION_UNIT_in_MemtoReg => PIPE_II_MemtoReg,
-            EXECUTION_UNIT_in_Funct3 => PIPE_II_Funct3,
-            EXECUTION_UNIT_in_Immediate => PIPE_II_Immediate,
-            EXECUTION_UNIT_in_RD => PIPE_II_RD,
-            EXECUTION_UNIT_in_MEM_WB_Read_Data => PIPE_IV_ReadData,
-            EXECUTION_UNIT_in_EX_MEM_ALU_result => PIPE_III_ALU_result,
-            EXECUTION_UNIT_in_EX_MEM_Next_PC => PIPE_III_next_PC,
-            EXECUTION_UNIT_in_MEM_WB_Next_PC => PIPE_IV_next_PC,
-            EXECUTION_UNIT_in_EX_MEM_RD => PIPE_III_RD,
-            EXECUTION_UNIT_in_MEM_WB_RD => PIPE_IV_RD,
-            EXECUTION_UNIT_in_EX_MEM_RegWrite => PIPE_III_RegWrite,
-            EXECUTION_UNIT_in_MEM_WB_RegWrite => PIPE_IV_RegWrite,
-            EXECUTION_UNIT_in_EX_MEM_Jump => PIPE_III_Jump,
-            EXECUTION_UNIT_in_MEM_WB_Jump => PIPE_IV_Jump,
-            EXECUTION_UNIT_out_Adder2 => Adder_PIPE_III,
-            EXECUTION_UNIT_out_next_PC => next_PC_PIPE_III,
+            EXECUTION_UNIT_in_RS1                  => PIPE_II_RS1,
+            EXECUTION_UNIT_in_RS2                  => PIPE_II_RS2,
+            EXECUTION_UNIT_in_next_PC              => PIPE_II_next_PC,
+            EXECUTION_UNIT_in_current_PC           => PIPE_II_current_PC,
+            EXECUTION_UNIT_in_Adder2               => PIPE_II_Adder2,
+            EXECUTION_UNIT_in_read_data1           => PIPE_II_read_data1,
+            EXECUTION_UNIT_in_read_data2           => PIPE_II_read_data2,
+            EXECUTION_UNIT_in_LUI                  => PIPE_II_LUI,
+            EXECUTION_UNIT_in_RegWrite             => PIPE_II_RegWrite,
+            EXECUTION_UNIT_in_MemRead              => PIPE_II_MemRead,
+            EXECUTION_UNIT_in_AUIPC                => PIPE_II_AUIPC,
+            EXECUTION_UNIT_in_Branch               => PIPE_II_Branch,
+            EXECUTION_UNIT_in_ALUScr               => PIPE_II_ALUScr,
+            EXECUTION_UNIT_in_MemWrite             => PIPE_II_MemWrite,
+            EXECUTION_UNIT_in_Jump                 => PIPE_II_Jump,
+            EXECUTION_UNIT_in_ALUOp                => PIPE_II_ALUOp,
+            EXECUTION_UNIT_in_MemtoReg             => PIPE_II_MemtoReg,
+            EXECUTION_UNIT_in_Funct3               => PIPE_II_Funct3,
+            EXECUTION_UNIT_in_Immediate            => PIPE_II_Immediate,
+            EXECUTION_UNIT_in_RD                   => PIPE_II_RD,
+            EXECUTION_UNIT_in_MEM_WB_MUX_WriteData => EXECUTION_UNIT_in_MEM_WB_MUX_WriteData,
+            EXECUTION_UNIT_in_EX_MEM_ALU_result    => PIPE_III_ALU_result,
+            EXECUTION_UNIT_in_EX_MEM_RD            => PIPE_III_RD,
+            EXECUTION_UNIT_in_MEM_WB_RD            => PIPE_IV_RD,
+            EXECUTION_UNIT_in_EX_MEM_RegWrite      => PIPE_III_RegWrite,
+            EXECUTION_UNIT_in_MEM_WB_RegWrite      => PIPE_IV_RegWrite,
+            EXECUTION_UNIT_in_MEM_WB_Jump          => PIPE_IV_Jump,
+            EXECUTION_UNIT_in_MEM_WB_Next_PC       => PIPE_IV_next_PC,
+            EXECUTION_UNIT_out_Adder2              => Adder_PIPE_III,
+            EXECUTION_UNIT_out_next_PC             => next_PC_PIPE_III,
             EXECUTION_UNIT_out_ALU_zero => ALU_zero_PIPE_III,
             EXECUTION_UNIT_out_ALU_result => ALU_result_PIPE_III,
             EXECUTION_UNIT_out_RegWrite => RegWrite_PIPE_III,
@@ -440,8 +452,9 @@ begin
             EXECUTION_UNIT_out_MemRead => MemRead_PIPE_III,
             EXECUTION_UNIT_out_MemtoReg => MemtoReg_PIPE_III,
             EXECUTION_UNIT_out_RD => RD_PIPE_III,
-            EXECUTION_UNIT_out_MUX3_out => MUX3_out_PIPE_III
+            EXECUTION_UNIT_out_RS2  => EXECUTION_UNIT_out_RS2
         );
+      
         
         
         i_PIPE_III_EX_MEM: PIPE_EX_MEM

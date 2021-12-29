@@ -5,6 +5,7 @@ use ieee.numeric_std.all;
 entity FETCH_UNIT is
     port(
         FETCH_UNIT_in_clk         : in std_logic;
+        FETCH_UNIT_in_rst_n         : in std_logic;
         FETCH_UNIT_in_jump        : in std_logic;
         FETCH_UNIT_in_PCscr       : in std_logic;
         FETCH_UNIT_in_jump_value  : in std_logic_vector(31 downto 0);
@@ -48,10 +49,16 @@ architecture BEHAVIORAL of FETCH_UNIT is
             MUX_PC_out          : out std_logic_vector(31 downto 0)
         );
     end component MUX_PC;
+    
+    component INSTRUCTION_MEMORY
+        port(
+            IM_IN_ADDRESS : in  std_logic_vector(4 downto 0);
+            IM_OUT        : out std_logic_vector(31 downto 0)
+        );
+    end component INSTRUCTION_MEMORY;
 
     --------SIGNALS------------------------------------------------------------------------
-    signal PC_ADD       : std_logic_vector(31 downto 0);
-    signal ADD_MUX_MEM  : std_logic_vector(31 downto 0);
+    signal PC_ADD_MEM       : std_logic_vector(31 downto 0); --OUTPUT OF PC
     signal MUXPC_PC       : std_logic_vector(31 downto 0);
     signal MUX_selector : std_logic_vector(1 downto 0);
     signal ADD_MUX : std_logic_vector(31 downto 0);
@@ -59,14 +66,13 @@ architecture BEHAVIORAL of FETCH_UNIT is
 begin
 
 
-    PC ENABLE E RESET, COME GESTIRLI!
     i_PC : PC
         port map(
-            PC_in_en => PC_in_en,
-            PC_in_rst => PC_in_rst,
-            PC_input  => MUXPC_PC,
+            PC_input => MUXPC_PC,
             PC_in_clk => FETCH_UNIT_in_clk,
-            PC_output => PC_ADD
+            PC_in_en => FETCH_UNIT_in_Hazard_control,
+            PC_in_rst => FETCH_UNIT_in_rst_n,
+            PC_output => PC_ADD_MEM
         );
 
     i_selector : MUX_selector <= FETCH_UNIT_in_PCscr & FETCH_UNIT_in_jump;
@@ -74,7 +80,7 @@ begin
     i_ADDER1 : ADDER2_NBIT
         generic map (N=>32)
         port map(
-            ADDER_IN_A   => PC_ADD,
+            ADDER_IN_A   => PC_ADD_MEM,
             ADDER_IN_B   => "00000000000000000000000000000010",
             ADDER_IN_CARRY => '0',
             ADDER_OUT_S  => ADD_MUX
@@ -92,10 +98,14 @@ begin
             MUX_PC_out          => MUXPC_PC
         );
 
-     -------------------------MISSING INSTRUCTION MEMORYYYYYYYYYYYYYYYYYYYYYYYYYYY------------------------------
+     i_INSTRUCTION_MEMORY: INSTRUCTION_MEMORY
+         port map(
+             IM_IN_ADDRESS => PC_ADD_MEM(4 downto 0),
+             IM_OUT        => FETCH_UNIT_out_instructions
+         );
 
     -----------------------OUTPUT-------------------------------------
-    FETCH_UNIT_out_current_PC <= PC_ADD;
+    FETCH_UNIT_out_current_PC <= PC_ADD_MEM;
     FETCH_UNIT_out_next_PC<= ADD_MUX;
 
 end architecture BEHAVIORAL;

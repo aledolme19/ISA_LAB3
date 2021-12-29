@@ -6,11 +6,16 @@ entity DECODING_UNIT is
     port(
         --INPUTS--
         DECODING_UNIT_in_CLK: in std_logic;
+        DECODING_UNIT_in_rst_n: in std_logic;
         DECODING_UNIT_in_MEM_WB_RegWrite: in std_logic;
         DECODING_UNIT_in_MEM_WB_WriteData: in std_logic_vector(31 downto 0);
         DECODING_UNIT_in_MEM_WB_RD: in std_logic_vector(4 downto 0);
+        DECODING_UNIT_in_EX_MEM_Branch: in std_logic;
+        DECODING_UNIT_in_ID_EX_Branch: in std_logic;
         DECODING_UNIT_in_ID_EX_RD: in std_logic_vector(4 downto 0);
         DECODING_UNIT_in_ID_EX_MemRead: in std_logic;
+        DECODING_UNIT_in_ID_EX_Jump: in std_logic;
+        DECODING_UNIT_in_MEM_WB_PCSrc: in std_logic;
         DECODING_UNIT_in_INSTR    : in  std_logic_vector(31 downto 0);
         DECODING_UNIT_in_next_PC : in  std_logic_vector(31 downto 0);
         DECODING_UNIT_in_current_PC : in  std_logic_vector(31 downto 0);
@@ -81,7 +86,7 @@ architecture BEHAVIORAL of DECODING_UNIT is
     component IMM_GEN
         port(
             IMM_GEN_IN_INSTR : in  std_logic_vector(31 downto 0);
-            IMM_GEN_OUT      : out std_logic_vector(63 downto 0)
+            IMM_GEN_OUT      : out std_logic_vector(31 downto 0)
         );
     end component IMM_GEN;
 
@@ -127,19 +132,33 @@ architecture BEHAVIORAL of DECODING_UNIT is
 
     signal HAZARD_mux_sel: std_logic;
     
-    signal immediate, immediate_shifted: std_logic_vector(63 downto 0);
+    signal immediate: std_logic_vector(31 downto 0);
+    
+    signal NOP_SELECT: std_logic;
+    signal OUTPUT_MUX_INSTR: std_logic_vector(31 downto 0);
 
 begin
 
     --instruction decomponsition
-    RS1 <= DECODING_UNIT_in_INSTR(19 downto 15);
-    RS2 <= DECODING_UNIT_in_INSTR(24 downto 20);
     OPCODE <= DECODING_UNIT_in_INSTR(6 downto 0);
-    FUNCT3 <= DECODING_UNIT_in_INSTR(14 downto 12);
-    RD <= DECODING_UNIT_in_INSTR(11 downto 7);
 
+    i_MUX_INSTR: bN_2to1mux
+        generic map(
+            N => 32
+        )
+        port map(
+            x      => DECODING_UNIT_in_INSTR,
+            y      => "0000000000000000000000000" & OPCODE,
+            s      => NOP_SELECT,
+            output => OUTPUT_MUX_INSTR
+        );
 
-
+    RS1 <= OUTPUT_MUX_INSTR(19 downto 15);
+    RS2 <= OUTPUT_MUX_INSTR(24 downto 20);
+    FUNCT3 <= OUTPUT_MUX_INSTR(14 downto 12);
+    RD <= OUTPUT_MUX_INSTR(11 downto 7);
+    
+    
     i_REGISTER_FILE: REGISTER_FILE
         generic map(
             data_length        => 32,
@@ -147,7 +166,7 @@ begin
         )
         port map(
             RF_IN_CLK        => DECODING_UNIT_in_CLK,
-            RF_IN_RST_N      => RF_IN_RST_N,
+            RF_IN_RST_N      => DECODING_UNIT_in_rst_n,
             RF_IN_REGWRITE   => DECODING_UNIT_in_MEM_WB_RegWrite,
             RF_IN_WRITE_RD   => DECODING_UNIT_in_MEM_WB_RD,
             RF_IN_WRITE_DATA => DECODING_UNIT_in_MEM_WB_WriteData,
@@ -176,6 +195,18 @@ begin
 
     input1_MUX_Control <= (others=>'0');
     input2_MUX_Control<= Branch & MemRead & ALUOp & MemWrite & ALUSrc & RegWrite & Jump & MemToReg & Lui & Auipc & FUNCT3;
+    
+    DECODING_UNIT_out_Branch<= out_MUX_Control(0);
+    DECODING_UNIT_out_MemRead<= out_MUX_Control(1);
+    DECODING_UNIT_out_ALUOp<= out_MUX_Control(3 downto 2);
+    DECODING_UNIT_out_MemWrite <= out_MUX_Control(4);
+    DECODING_UNIT_out_ALUScr<= out_MUX_Control(5);
+    DECODING_UNIT_out_RegWrite <= out_MUX_Control(6);
+    DECODING_UNIT_out_Jump <= out_MUX_Control(7);
+    DECODING_UNIT_out_MemtoReg <= out_MUX_Control(9 downto 8);
+    DECODING_UNIT_out_LUI <= out_MUX_Control(10);
+    DECODING_UNIT_out_AUIPC<= out_MUX_Control(11);
+    DECODING_UNIT_out_Funct3 <= out_MUX_Control(14 downto 12);
 
     i_MUX_CONTROL: bN_2to1mux
         generic map(
@@ -195,15 +226,13 @@ begin
              IMM_GEN_OUT      => immediate
          );
 
-
-    immediate_shifted <= immediate(62 downto 0) & "0";
     
     i_ADDER2: ADDER2_NBIT
         generic map(
             N => 32
         )
         port map(
-            ADDER_IN_A     => immediate_shifted(31 downto 0),
+            ADDER_IN_A     => immediate,
             ADDER_IN_B     => DECODING_UNIT_in_current_PC,
             ADDER_IN_CARRY => '0',
             ADDER_OUT_S    => DECODING_UNIT_out_Adder2
@@ -216,32 +245,20 @@ begin
             HU_IN_ID_EX_MEMREAD      => DECODING_UNIT_in_ID_EX_MemRead,
             HU_IN_ID_EX_RD           => DECODING_UNIT_in_ID_EX_RD,
             HU_IN_IF_ID_BRANCH       => out_MUX_Control(0),
-            HU_IN_ID_EX_BRANCH       => HU_IN_ID_EX_BRANCH,
-            HU_IN_EX_MEM_BRANCH      => HU_IN_EX_MEM_BRANCH,
-            HU_IN_ID_EX_JUMP         => HU_IN_ID_EX_JUMP,
-            HU_IN_MEM_WB_BRANCHTAKEN => HU_IN_MEM_WB_BRANCHTAKEN,
-            HU_OUT_IF_ID_PC_WRITE    => HU_OUT_IF_ID_PC_WRITE,
-            HU_OUT_NOP_SEL           => HU_OUT_NOP_SEL
+            HU_IN_ID_EX_BRANCH       => DECODING_UNIT_in_ID_EX_Branch,
+            HU_IN_EX_MEM_BRANCH      => DECODING_UNIT_in_EX_MEM_Branch,
+            HU_IN_ID_EX_JUMP         => DECODING_UNIT_in_ID_EX_Jump,
+            HU_IN_MEM_WB_BRANCHTAKEN => DECODING_UNIT_in_PCSrc,
+            HU_OUT_IF_ID_PC_WRITE    => DECODING_UNIT_out_Hazard_Control,
+            HU_OUT_NOP_SEL           => NOP_SELECT
         );
     
     
-
+    NOP SELECT VA IN INGRESSO A MUX? MENTRE NOP PC TORNA INDIETRO A PC E PIPE?
 
 
 
     ----OUTPUT--------------------------
-    DECODING_UNIT_out_Branch<= out_MUX_Control(0);
-    DECODING_UNIT_out_MemRead<= out_MUX_Control(1);
-    DECODING_UNIT_out_ALUOp<= out_MUX_Control(3 downto 2);
-    DECODING_UNIT_out_MemWrite <= out_MUX_Control(4);
-    DECODING_UNIT_out_ALUScr<= out_MUX_Control(5);
-    DECODING_UNIT_out_RegWrite <= out_MUX_Control(6);
-    DECODING_UNIT_out_Jump <= out_MUX_Control(7);
-    DECODING_UNIT_out_MemtoReg <= out_MUX_Control(9 downto 8);
-    DECODING_UNIT_out_LUI <= out_MUX_Control(10);
-    DECODING_UNIT_out_AUIPC<= out_MUX_Control(11);
-    DECODING_UNIT_out_Funct3 <= out_MUX_Control(14 downto 12);
-   
    DECODING_UNIT_out_RS1 <= RS1;
    DECODING_UNIT_out_RS2 <= RS2;
    DECODING_UNIT_out_RD <= RD;
