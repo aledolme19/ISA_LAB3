@@ -134,7 +134,7 @@ architecture BEHAVIORAL of RISC_V is
             EXECUTION_UNIT_out_MemRead                                                                                                                                                                                    : out std_logic;
             EXECUTION_UNIT_out_MemtoReg                                                                                                                                                                                   : out std_logic_vector(1 downto 0);
             EXECUTION_UNIT_out_RD                                                                                                                                                                                         : out std_logic_vector(4 downto 0);
-            EXECUTION_UNIT_out_RS2                                                                                                                                                                                        : out std_logic_vector(4 downto 0)
+            EXECUTION_UNIT_out_ReadData2                                                                                                                                                                                        : out std_logic_vector(31 downto 0)
         );
     end component EXECUTION_UNIT;
     
@@ -162,8 +162,8 @@ architecture BEHAVIORAL of RISC_V is
             PIPE_EX_MEM_out_RD                                                                                                        : out std_logic_vector(4 downto 0)
         );
     end component PIPE_EX_MEM;
-    
-    
+
+
     component MEMORY_UNIT
         port(
             MEMORY_UNIT_in_next_PC                                                                        : in  std_logic_vector(31 downto 0);
@@ -180,8 +180,8 @@ architecture BEHAVIORAL of RISC_V is
             MEMORY_UNIT_out_RD                                                                            : out std_logic_vector(4 downto 0)
         );
     end component MEMORY_UNIT;
-    
-    
+
+
     component PIPE_MEM_WB
         port(
             PIPE_MEM_WB_clk                                : in  std_logic;
@@ -220,12 +220,12 @@ architecture BEHAVIORAL of RISC_V is
     signal PCSrc_address_ID_MEM: std_logic_vector(31 downto 0);
     signal Hazard_Control_PC_ID_IF: std_logic;
     signal IF_next_PC_PIPE_I, IF_current_PC_PIPE_I, IF_instruction_PIPE_I: std_logic_vector(31 downto 0);
-    
+
     --PIPE_IF_ID Signals-----------------------------------------------------------------
     signal PIPE_I_rst: std_logic;
     signal PIPE_I_en: std_logic; --coming from the HAZARD UNIT
     signal PIPE_I_next_PC, PIPE_I_current_PC, PIPE_I_instruction: std_logic_vector(31 downto 0);
-    
+
     --Decoding Unit Signals---------------------------------------------------------------
     signal MEM_WB_RegWrite: std_logic;
     signal MEM_WB_WriteData: std_logic_vector(31 downto 0);
@@ -242,7 +242,7 @@ architecture BEHAVIORAL of RISC_V is
     signal Immediate_PIPE_II: std_logic_vector(31 downto 0);
     signal RD_PIPE_II: std_logic_vector(4 downto 0);
     signal DECODING_UNIT_OUT_HAZARD_CONTROL: std_logic;
-    
+
     --PIPE_ID_EX Signals-----------------------------------------------------------------
     signal PIPE_II_rst: std_logic;
     signal PIPE_II_en: std_logic; --coming from the HAZARD UNIT
@@ -252,7 +252,7 @@ architecture BEHAVIORAL of RISC_V is
     signal PIPE_II_ALUOp, PIPE_II_MemtoReg : std_logic_vector(1 downto 0);
     signal PIPE_II_Funct3 : std_logic_vector(2 downto 0);
     signal PIPE_II_Immediate : std_logic_vector(31 downto 0);
-    
+
     --Execution Unit signals------------------------------------------------------------
     signal Adder_PIPE_III, next_PC_PIPE_III, MUX3_out_PIPE_III : std_logic_vector(31 downto 0);
     signal ALU_zero_PIPE_III: std_logic;
@@ -268,7 +268,7 @@ architecture BEHAVIORAL of RISC_V is
     signal PIPE_III_ALU_zero, PIPE_III_RegWrite, PIPE_III_Branch ,PIPE_III_MemWrite,  PIPE_III_Jump, PIPE_III_MemRead : std_logic;
     signal PIPE_III_MemtoReg : std_logic_vector(1 downto 0);
     signal PIPE_III_RD : std_logic_vector(4 downto 0);
-    
+
     signal PCSrc: std_logic;
 
     --Memory Unit signals----------------------------------------------------------------
@@ -276,7 +276,7 @@ architecture BEHAVIORAL of RISC_V is
     signal Jump_PIPE_IV, RegWrite_PIPE_IV :  std_logic;
     signal MemtoReg_PIPE_IV :  std_logic_vector(1 downto 0);
     signal RD_PIPE_IV : std_logic_vector(4 downto 0);
-    
+
     --PIPE_MEM_WB Signals----------------------------------------------------------------------
     signal PIPE_IV_rst: std_logic;
     signal PIPE_IV_en: std_logic;
@@ -284,16 +284,16 @@ architecture BEHAVIORAL of RISC_V is
     signal PIPE_IV_Jump, PIPE_IV_RegWrite :  std_logic;
     signal PIPE_IV_MemtoReg :  std_logic_vector(1 downto 0);
     signal PIPE_IV_RD  : std_logic_vector(4 downto 0);
-    
-    
-   --Write Back Unit---------------------------------------------------------------------------
-   signal WB_WriteData : std_logic_vector(31 downto 0);
-    
+
+
+    --Write Back Unit---------------------------------------------------------------------------
+    signal WB_WriteData : std_logic_vector(31 downto 0);
+
 
 begin
-    
-    
-    
+
+
+
 
 
     i_FETCH_UNIT: FETCH_UNIT
@@ -452,95 +452,95 @@ begin
             EXECUTION_UNIT_out_MemRead => MemRead_PIPE_III,
             EXECUTION_UNIT_out_MemtoReg => MemtoReg_PIPE_III,
             EXECUTION_UNIT_out_RD => RD_PIPE_III,
-            EXECUTION_UNIT_out_RS2  => EXECUTION_UNIT_out_RS2
+            EXECUTION_UNIT_out_ReadData2  => EXECUTION_UNIT_out_RS2
         );
-      
-        
-        
-        i_PIPE_III_EX_MEM: PIPE_EX_MEM
-            port map(
-                PIPE_EX_MEM_clk            => RISC_V_clk,
-                PIPE_EX_MEM_rst            => PIPE_III_rst,
-                PIPE_EX_MEM_ENABLE         => PIPE_III_en,
-                PIPE_EX_MEM_in_Adder2      => Adder_PIPE_III,
-                PIPE_EX_MEM_in_next_PC     => next_PC_PIPE_III,
-                PIPE_EX_MEM_in_ALU_zero    => ALU_zero_PIPE_III,
-                PIPE_EX_MEM_in_ALU_result  => ALU_result_PIPE_III,
-                PIPE_EX_MEM_in_MUX3        => MUX3_out_PIPE_III,
-                PIPE_EX_MEM_in_RegWrite    => RegWrite_PIPE_III,
-                PIPE_EX_MEM_in_Branch      => Branch_PIPE_III,
-                PIPE_EX_MEM_in_MemWrite    => MemWrite_PIPE_III,
-                PIPE_EX_MEM_in_Jump        => Jump_PIPE_III,
-                PIPE_EX_MEM_in_MemRead     => MemRead_PIPE_III,
-                PIPE_EX_MEM_in_MemtoReg    => MemtoReg_PIPE_III,
-                PIPE_EX_MEM_in_RD          => RD_PIPE_III,
-                PIPE_EX_MEM_out_Adder2     => PIPE_III_Adder2,
-                PIPE_EX_MEM_out_next_PC    => PIPE_III_next_PC,
-                PIPE_EX_MEM_out_ALU_zero   => PIPE_III_ALU_zero,
-                PIPE_EX_MEM_out_ALU_result => PIPE_III_ALU_result,
-                PIPE_EX_MEM_out_MUX3       => PIPE_III_MUX3,
-                PIPE_EX_MEM_out_RegWrite   => PIPE_III_RegWrite,
-                PIPE_EX_MEM_out_Branch     => PIPE_III_Branch,
-                PIPE_EX_MEM_out_MemWrite   => PIPE_III_MemWrite,
-                PIPE_EX_MEM_out_Jump       => PIPE_III_Jump,
-                PIPE_EX_MEM_out_MemRead    => PIPE_III_MemRead,
-                PIPE_EX_MEM_out_MemtoReg   => PIPE_III_MemtoReg,
-                PIPE_EX_MEM_out_RD         => PIPE_III_RD
-            );
-          
-          
-           PCSrc <= PIPE_III_Branch AND PIPE_III_ALU_zero;
-            
-            
-         i_MEMORY_UNIT: MEMORY_UNIT
-             port map(
-                 MEMORY_UNIT_in_next_PC   => PIPE_III_next_PC,
-                 MEMORY_UNIT_in_ADDRESS   => PIPE_III_ALU_result,
-                 MEMORY_UNIT_in_CLK       => RISC_V_clk,
-                 MEMORY_UNIT_in_rst       => MEMORY_UNIT_in_rst,
-                 MEMORY_UNIT_in_MemRead   => PIPE_III_MemRead,
-                 MEMORY_UNIT_in_MemWrite  => PIPE_III_MemWrite,
-                 MEMORY_UNIT_in_Jump      => PIPE_III_Jump,
-                 MEMORY_UNIT_in_RegWrite  => PIPE_III_RegWrite,
-                 MEMORY_UNIT_in_MemtoReg  => PIPE_III_MemtoReg,
-                 MEMORY_UNIT_in_RD        => PIPE_III_RD,
-                 MEMORY_UNIT_in_DATA      => PIPE_III_MUX3,
-                 MEMORY_UNIT_out_next_PC  => next_PC_PIPE_IV,
-                 MEMORY_UNIT_out_ReadData => ReadData_PIPE_IV,
-                 MEMORY_UNIT_out_Jump     => Jump_PIPE_IV,
-                 MEMORY_UNIT_out_RegWrite => RegWrite_PIPE_IV,
-                 MEMORY_UNIT_out_MemtoReg => MemtoReg_PIPE_IV,
-                 MEMORY_UNIT_out_RD       => RD_PIPE_IV
-             );
-             
-           i_PIPE_IV_MEM_WB: PIPE_MEM_WB
-               port map(
-                   PIPE_MEM_WB_clk          => RISC_V_clk,
-                   PIPE_MEM_WB_rst          => PIPE_IV_rst,
-                   PIPE_MEM_WB_ENABLE       => PIPE_IV_en,
-                   PIPE_MEM_WB_in_next_PC   => next_PC_PIPE_IV,
-                   PIPE_MEM_WB_in_ReadData  => ReadData_PIPE_IV,
-                   PIPE_MEM_WB_in_Jump      => Jump_PIPE_IV,
-                   PIPE_MEM_WB_in_RegWrite  => RegWrite_PIPE_IV,
-                   PIPE_MEM_WB_in_MemtoReg  => MemtoReg_PIPE_IV,
-                   PIPE_MEM_WB_in_RD        => RD_PIPE_IV,
-                   PIPE_MEM_WB_out_next_PC  => PIPE_IV_next_PC,
-                   PIPE_MEM_WB_out_ReadData => PIPE_IV_ReadData,
-                   PIPE_MEM_WB_out_Jump     => PIPE_IV_Jump,
-                   PIPE_MEM_WB_out_RegWrite => PIPE_IV_RegWrite,
-                   PIPE_MEM_WB_out_MemtoReg => PIPE_IV_MemtoReg,
-                   PIPE_MEM_WB_out_RD       => PIPE_IV_RD
-               ); 
-               
-         i_WRITE_BACK_UNIT: WRITE_BACK_UNIT
-             port map(
-                 WRITE_BACK_UNIT_in_next_PC    => PIPE_IV_next_PC,
-                 WRITE_BACK_UNIT_in_ReadData   => PIPE_IV_ReadData,
-                 WRITE_BACK_UNIT_in_MemtoReg   => PIPE_IV_MemtoReg,
-                 WRITE_BACK_UNIT_in_ALU_Result => WRITE_BACK_UNIT_in_ALU_Result,
-                 PIPE_MEM_WB_out_MUX           => WB_WriteData
-             );    
-          
+
+
+
+    i_PIPE_III_EX_MEM: PIPE_EX_MEM
+        port map(
+            PIPE_EX_MEM_clk            => RISC_V_clk,
+            PIPE_EX_MEM_rst            => PIPE_III_rst,
+            PIPE_EX_MEM_ENABLE         => PIPE_III_en,
+            PIPE_EX_MEM_in_Adder2      => Adder_PIPE_III,
+            PIPE_EX_MEM_in_next_PC     => next_PC_PIPE_III,
+            PIPE_EX_MEM_in_ALU_zero    => ALU_zero_PIPE_III,
+            PIPE_EX_MEM_in_ALU_result  => ALU_result_PIPE_III,
+            PIPE_EX_MEM_in_MUX3        => MUX3_out_PIPE_III,
+            PIPE_EX_MEM_in_RegWrite    => RegWrite_PIPE_III,
+            PIPE_EX_MEM_in_Branch      => Branch_PIPE_III,
+            PIPE_EX_MEM_in_MemWrite    => MemWrite_PIPE_III,
+            PIPE_EX_MEM_in_Jump        => Jump_PIPE_III,
+            PIPE_EX_MEM_in_MemRead     => MemRead_PIPE_III,
+            PIPE_EX_MEM_in_MemtoReg    => MemtoReg_PIPE_III,
+            PIPE_EX_MEM_in_RD          => RD_PIPE_III,
+            PIPE_EX_MEM_out_Adder2     => PIPE_III_Adder2,
+            PIPE_EX_MEM_out_next_PC    => PIPE_III_next_PC,
+            PIPE_EX_MEM_out_ALU_zero   => PIPE_III_ALU_zero,
+            PIPE_EX_MEM_out_ALU_result => PIPE_III_ALU_result,
+            PIPE_EX_MEM_out_MUX3       => PIPE_III_MUX3,
+            PIPE_EX_MEM_out_RegWrite   => PIPE_III_RegWrite,
+            PIPE_EX_MEM_out_Branch     => PIPE_III_Branch,
+            PIPE_EX_MEM_out_MemWrite   => PIPE_III_MemWrite,
+            PIPE_EX_MEM_out_Jump       => PIPE_III_Jump,
+            PIPE_EX_MEM_out_MemRead    => PIPE_III_MemRead,
+            PIPE_EX_MEM_out_MemtoReg   => PIPE_III_MemtoReg,
+            PIPE_EX_MEM_out_RD         => PIPE_III_RD
+        );
+
+
+    PCSrc <= PIPE_III_Branch AND PIPE_III_ALU_zero;
+
+
+    i_MEMORY_UNIT: MEMORY_UNIT
+        port map(
+            MEMORY_UNIT_in_next_PC   => PIPE_III_next_PC,
+            MEMORY_UNIT_in_ADDRESS   => PIPE_III_ALU_result,
+            MEMORY_UNIT_in_CLK       => RISC_V_clk,
+            MEMORY_UNIT_in_rst       => MEMORY_UNIT_in_rst,
+            MEMORY_UNIT_in_MemRead   => PIPE_III_MemRead,
+            MEMORY_UNIT_in_MemWrite  => PIPE_III_MemWrite,
+            MEMORY_UNIT_in_Jump      => PIPE_III_Jump,
+            MEMORY_UNIT_in_RegWrite  => PIPE_III_RegWrite,
+            MEMORY_UNIT_in_MemtoReg  => PIPE_III_MemtoReg,
+            MEMORY_UNIT_in_RD        => PIPE_III_RD,
+            MEMORY_UNIT_in_DATA      => PIPE_III_MUX3,
+            MEMORY_UNIT_out_next_PC  => next_PC_PIPE_IV,
+            MEMORY_UNIT_out_ReadData => ReadData_PIPE_IV,
+            MEMORY_UNIT_out_Jump     => Jump_PIPE_IV,
+            MEMORY_UNIT_out_RegWrite => RegWrite_PIPE_IV,
+            MEMORY_UNIT_out_MemtoReg => MemtoReg_PIPE_IV,
+            MEMORY_UNIT_out_RD       => RD_PIPE_IV
+        );
+
+    i_PIPE_IV_MEM_WB: PIPE_MEM_WB
+        port map(
+            PIPE_MEM_WB_clk          => RISC_V_clk,
+            PIPE_MEM_WB_rst          => PIPE_IV_rst,
+            PIPE_MEM_WB_ENABLE       => PIPE_IV_en,
+            PIPE_MEM_WB_in_next_PC   => next_PC_PIPE_IV,
+            PIPE_MEM_WB_in_ReadData  => ReadData_PIPE_IV,
+            PIPE_MEM_WB_in_Jump      => Jump_PIPE_IV,
+            PIPE_MEM_WB_in_RegWrite  => RegWrite_PIPE_IV,
+            PIPE_MEM_WB_in_MemtoReg  => MemtoReg_PIPE_IV,
+            PIPE_MEM_WB_in_RD        => RD_PIPE_IV,
+            PIPE_MEM_WB_out_next_PC  => PIPE_IV_next_PC,
+            PIPE_MEM_WB_out_ReadData => PIPE_IV_ReadData,
+            PIPE_MEM_WB_out_Jump     => PIPE_IV_Jump,
+            PIPE_MEM_WB_out_RegWrite => PIPE_IV_RegWrite,
+            PIPE_MEM_WB_out_MemtoReg => PIPE_IV_MemtoReg,
+            PIPE_MEM_WB_out_RD       => PIPE_IV_RD
+        );
+
+    i_WRITE_BACK_UNIT: WRITE_BACK_UNIT
+        port map(
+            WRITE_BACK_UNIT_in_next_PC    => PIPE_IV_next_PC,
+            WRITE_BACK_UNIT_in_ReadData   => PIPE_IV_ReadData,
+            WRITE_BACK_UNIT_in_MemtoReg   => PIPE_IV_MemtoReg,
+            WRITE_BACK_UNIT_in_ALU_Result => WRITE_BACK_UNIT_in_ALU_Result,
+            PIPE_MEM_WB_out_MUX           => WB_WriteData
+        );
+
 
 
 end BEHAVIORAL;

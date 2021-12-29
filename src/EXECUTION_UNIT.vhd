@@ -37,7 +37,7 @@ entity EXECUTION_UNIT is
         EXECUTION_UNIT_out_MemRead: out std_logic;
         EXECUTION_UNIT_out_MemtoReg: out std_logic_vector(1 downto 0);
         EXECUTION_UNIT_out_RD: out std_logic_vector(4 downto 0);
-        EXECUTION_UNIT_out_RS2: out  std_logic_vector(4 downto 0)
+        EXECUTION_UNIT_out_ReadData2: out  std_logic_vector(31 downto 0)
 
     );
 end entity EXECUTION_UNIT;
@@ -217,7 +217,7 @@ begin
         EXECUTION_UNIT_out_MemtoReg <= EXECUTION_UNIT_in_MemtoReg;
         EXECUTION_UNIT_out_RD <=EXECUTION_UNIT_in_RD;
         EXECUTION_UNIT_out_MemRead <= EXECUTION_UNIT_in_MemRead;
-        EXECUTION_UNIT_out_RS2 <= EXECUTION_UNIT_in_RS2;
+        EXECUTION_UNIT_out_ReadData2 <= EXECUTION_UNIT_in_read_data2;
 
 
 
