@@ -37,7 +37,7 @@ architecture BEHAVIORAL of PIPE_ID_EX is
 
 ----------------------------COMPONENT-------------------------------------------------
 
-    component flipflop_en_rst_n
+    component flipflop_en_rst_n_falling_edge
         port(
             D     : in  std_logic;
             clk   : in  std_logic;
@@ -45,10 +45,10 @@ architecture BEHAVIORAL of PIPE_ID_EX is
             en    : in  std_logic;
             Q     : out std_logic
         );
-    end component flipflop_en_rst_n;
+    end component flipflop_en_rst_n_falling_edge;
 
 
-    component reg_en_rst_n
+    component reg_en_rst_n_falling_edge
         generic(N : positive := 32);
         port(
             D     : in  std_logic_vector(N - 1 downto 0);
@@ -57,12 +57,47 @@ architecture BEHAVIORAL of PIPE_ID_EX is
             clk   : in  std_logic;
             Q     : out std_logic_vector(N - 1 downto 0)
         );
-    end component reg_en_rst_n;
-
+    end component reg_en_rst_n_falling_edge;
 
 begin
+    
+    i_Reg_RS1: reg_en_rst_n_falling_edge
+        generic map(
+            N => 5
+        )
+        port map(
+            D     => PIPE_ID_EX_in_RS1,
+            en    => PIPE_ID_EX_ENABLE,
+            rst_n => PIPE_ID_EX_rst,
+            clk   => PIPE_ID_EX_clk,
+            Q     => PIPE_ID_EX_out_RS1
+        );
 
-    i_Reg_ADDER_2: reg_en_rst_n
+    i_Reg_RS2: reg_en_rst_n_falling_edge
+        generic map(
+            N => 5
+        )
+        port map(
+            D     => PIPE_ID_EX_in_RS2,
+            en    => PIPE_ID_EX_ENABLE,
+            rst_n => PIPE_ID_EX_rst,
+            clk   => PIPE_ID_EX_clk,
+            Q     => PIPE_ID_EX_out_RS2
+        );
+
+    i_Reg_Next_PC: reg_en_rst_n_falling_edge
+        generic map(
+            N => 32
+        )
+        port map(
+            D     => PIPE_ID_EX_in_next_PC,
+            en    => PIPE_ID_EX_ENABLE,
+            rst_n => PIPE_ID_EX_rst,
+            clk   => PIPE_ID_EX_clk,
+            Q     => PIPE_ID_EX_out_next_PC
+        );
+        
+    i_Reg_ADDER_2: reg_en_rst_n_falling_edge
         generic map(
             N => 32
         )
@@ -75,44 +110,7 @@ begin
         );
 
 
-
-    i_Reg_RS1: reg_en_rst_n
-        generic map(
-            N => 5
-        )
-        port map(
-            D     => PIPE_ID_EX_in_RS1,
-            en    => PIPE_ID_EX_ENABLE,
-            rst_n => PIPE_ID_EX_rst,
-            clk   => PIPE_ID_EX_clk,
-            Q     => PIPE_ID_EX_out_RS1
-        );
-
-    i_Reg_RS2: reg_en_rst_n
-        generic map(
-            N => 5
-        )
-        port map(
-            D     => PIPE_ID_EX_in_RS2,
-            en    => PIPE_ID_EX_ENABLE,
-            rst_n => PIPE_ID_EX_rst,
-            clk   => PIPE_ID_EX_clk,
-            Q     => PIPE_ID_EX_out_RS2
-        );
-
-    i_Reg_Next_PC: reg_en_rst_n
-        generic map(
-            N => 32
-        )
-        port map(
-            D     => PIPE_ID_EX_in_next_PC,
-            en    => PIPE_ID_EX_ENABLE,
-            rst_n => PIPE_ID_EX_rst,
-            clk   => PIPE_ID_EX_clk,
-            Q     => PIPE_ID_EX_out_next_PC
-        );
-
-    i_Reg_Current_PC: reg_en_rst_n
+    i_Reg_Current_PC: reg_en_rst_n_falling_edge
         generic map(
             N => 32
         )
@@ -124,7 +122,7 @@ begin
             Q     => PIPE_ID_EX_out_current_PC
         );
 
-    i_Reg_Read_Data1: reg_en_rst_n
+    i_Reg_Read_Data1: reg_en_rst_n_falling_edge
         generic map(
             N => 32
         )
@@ -137,7 +135,7 @@ begin
         );
 
 
-    i_reg_Read_Data2: reg_en_rst_n
+    i_reg_Read_Data2: reg_en_rst_n_falling_edge
         generic map(
             N => 32
         )
@@ -149,7 +147,7 @@ begin
             Q     => PIPE_ID_EX_out_read_data2
         );
 
-    i_FF_LUI: flipflop_en_rst_n
+    i_FF_LUI: flipflop_en_rst_n_falling_edge
         port map(
             D     => PIPE_ID_EX_in_LUI,
             clk   => PIPE_ID_EX_clk,
@@ -158,7 +156,7 @@ begin
             Q     => PIPE_ID_EX_out_LUI
         );
 
-    i_FF_RegWrite: flipflop_en_rst_n
+    i_FF_RegWrite: flipflop_en_rst_n_falling_edge
         port map(
             D     => PIPE_ID_EX_in_RegWrite,
             clk   => PIPE_ID_EX_clk,
@@ -168,7 +166,7 @@ begin
         );
 
 
-    i_FF_MemRead: flipflop_en_rst_n
+    i_FF_MemRead: flipflop_en_rst_n_falling_edge
         port map(
             D     => PIPE_ID_EX_in_MemRead,
             clk   => PIPE_ID_EX_clk,
@@ -178,7 +176,7 @@ begin
         );
 
 
-    i_FF_AUIP: flipflop_en_rst_n
+    i_FF_AUIP: flipflop_en_rst_n_falling_edge
         port map(
             D     => PIPE_ID_EX_in_AUIPC,
             clk   => PIPE_ID_EX_clk,
@@ -188,7 +186,7 @@ begin
         );
 
 
-    i_FF_Branch: flipflop_en_rst_n
+    i_FF_Branch: flipflop_en_rst_n_falling_edge
         port map(
             D     => PIPE_ID_EX_in_Branch,
             clk   => PIPE_ID_EX_clk,
@@ -198,7 +196,7 @@ begin
         );
 
 
-    i_FF_ALUScr: flipflop_en_rst_n
+    i_FF_ALUScr: flipflop_en_rst_n_falling_edge
         port map(
             D     => PIPE_ID_EX_in_ALUScr,
             clk   => PIPE_ID_EX_clk,
@@ -208,7 +206,7 @@ begin
         );
 
 
-    i_FF_MemWrite: flipflop_en_rst_n
+    i_FF_MemWrite: flipflop_en_rst_n_falling_edge
         port map(
             D     => PIPE_ID_EX_in_MemWrite,
             clk   => PIPE_ID_EX_clk,
@@ -217,7 +215,7 @@ begin
             Q     => PIPE_ID_EX_out_MemWrite
         );
 
-    i_FF_Jump : flipflop_en_rst_n
+    i_FF_Jump : flipflop_en_rst_n_falling_edge
         port map(
             D     => PIPE_ID_EX_in_Jump,
             clk   => PIPE_ID_EX_clk,
@@ -228,7 +226,7 @@ begin
 
 
 
-    i_reg_ALUOp: reg_en_rst_n
+    i_reg_ALUOp: reg_en_rst_n_falling_edge
         generic map(
             N => 2
         )
@@ -241,7 +239,7 @@ begin
         );
 
 
-    i_reg_MemtoReg: reg_en_rst_n
+    i_reg_MemtoReg: reg_en_rst_n_falling_edge
         generic map(
             N => 2
         )
@@ -254,7 +252,7 @@ begin
         );
 
 
-    i_reg_Funct3 : reg_en_rst_n
+    i_reg_Funct3 : reg_en_rst_n_falling_edge
         generic map(
             N => 3
         )
@@ -266,7 +264,7 @@ begin
             Q     => PIPE_ID_EX_out_Funct3
         );
     
-    i_reg_Immediate: reg_en_rst_n
+    i_reg_Immediate: reg_en_rst_n_falling_edge
         generic map(
             N => 32
         )
@@ -278,7 +276,7 @@ begin
             Q     => PIPE_ID_EX_out_Immediate(31 downto 0)
         );
     
-    i_reg_RD: reg_en_rst_n
+    i_reg_RD: reg_en_rst_n_falling_edge
         generic map(
             N => 5
         )

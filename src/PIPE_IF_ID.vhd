@@ -20,7 +20,7 @@ end entity  PIPE_IF_ID;
 architecture BEHAVIORAL of PIPE_IF_ID is
 
     ------------COMPONONENTs--------------------------------------------------
-    component reg_en_rst_n
+    component reg_en_rst_n_falling_edge
         generic(N : positive := 32);
         port(
             D     : in  std_logic_vector(N - 1 downto 0);
@@ -29,7 +29,7 @@ architecture BEHAVIORAL of PIPE_IF_ID is
             clk   : in  std_logic;
             Q     : out std_logic_vector(N - 1 downto 0)
         );
-    end component reg_en_rst_n;
+    end component reg_en_rst_n_falling_edge;
 
 
 
@@ -38,7 +38,7 @@ architecture BEHAVIORAL of PIPE_IF_ID is
 begin
 
 
-    i_PIPE_next_PC: reg_en_rst_n
+    i_PIPE_next_PC: reg_en_rst_n_falling_edge
         generic map(
             N => 32
         )
@@ -50,7 +50,7 @@ begin
             Q     => PIPE_IF_ID_out_next_PC
         );
 
-    i_PIPE_current_PC : reg_en_rst_n
+    i_PIPE_current_PC : reg_en_rst_n_falling_edge
         generic map(
             N => 32
         )
@@ -62,7 +62,7 @@ begin
             Q     => PIPE_IF_ID_out_current_PC 
         );
         
-    i_PIPE_instructions: reg_en_rst_n
+    i_PIPE_instructions: reg_en_rst_n_falling_edge
         generic map(
             N => 32
         )

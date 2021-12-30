@@ -130,7 +130,6 @@ architecture BEHAVIORAL of DECODING_UNIT is
     signal input1_MUX_Control, input2_MUX_Control: std_logic_vector(14 downto 0);
     signal out_MUX_Control:  std_logic_vector(14 downto 0);
 
-    signal HAZARD_mux_sel: std_logic;
     
     signal immediate: std_logic_vector(31 downto 0);
     
@@ -215,7 +214,7 @@ begin
         port map(
             x      => input2_MUX_Control,
             y      => input1_MUX_Control,
-            s      => HAZARD_mux_sel,
+            s      => NOP_SELECT,
             output => out_MUX_Control
         );
         
@@ -248,13 +247,11 @@ begin
             HU_IN_ID_EX_BRANCH       => DECODING_UNIT_in_ID_EX_Branch,
             HU_IN_EX_MEM_BRANCH      => DECODING_UNIT_in_EX_MEM_Branch,
             HU_IN_ID_EX_JUMP         => DECODING_UNIT_in_ID_EX_Jump,
-            HU_IN_MEM_WB_BRANCHTAKEN => DECODING_UNIT_in_PCSrc,
+            HU_IN_MEM_WB_BRANCHTAKEN => DECODING_UNIT_in_MEM_WB_PCSrc,
             HU_OUT_IF_ID_PC_WRITE    => DECODING_UNIT_out_Hazard_Control,
             HU_OUT_NOP_SEL           => NOP_SELECT
         );
     
-    
-    NOP SELECT VA IN INGRESSO A MUX? MENTRE NOP PC TORNA INDIETRO A PC E PIPE?
 
 
 
