@@ -15,10 +15,12 @@ architecture BEHAVIORAL of SHIFT_RIGHT_NBIT is
 
 begin
 
-	shift_process : process(SHIFT_IN_OPERAND, SHIFT_IN_SHIFT_AMOUNT) is
-	begin
-		SHIFT_OUT <= std_logic_vector(shift_right(signed(SHIFT_IN_OPERAND), to_integer(unsigned(SHIFT_IN_SHIFT_AMOUNT))));
-	end process shift_process;
+--	shift_process : process(SHIFT_IN_OPERAND, SHIFT_IN_SHIFT_AMOUNT) is
+--	begin
+--		SHIFT_OUT <= std_logic_vector(shift_right(signed(SHIFT_IN_OPERAND), to_integer(unsigned(SHIFT_IN_SHIFT_AMOUNT))));
+--	end process shift_process;
+
+    SHIFT_OUT <= std_logic_vector(unsigned (to_stdlogicvector(to_bitvector(std_logic_vector(SHIFT_IN_OPERAND)) sra to_integer(unsigned(SHIFT_IN_SHIFT_AMOUNT)))));
 
 end BEHAVIORAL;
 

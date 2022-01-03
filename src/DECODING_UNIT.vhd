@@ -228,8 +228,8 @@ begin
 
     i_HAZARD_UNIT : HAZARD_UNIT
         port map(
-            HU_IN_IF_ID_RS1          => RS1,
-            HU_IN_IF_ID_RS2          => RS2,
+            HU_IN_IF_ID_RS1          => DECODING_UNIT_in_INSTR(19 downto 15),
+            HU_IN_IF_ID_RS2          => DECODING_UNIT_in_INSTR(24 downto 20),
             HU_IN_ID_EX_MEMREAD      => DECODING_UNIT_in_ID_EX_MemRead,
             HU_IN_ID_EX_RD           => DECODING_UNIT_in_ID_EX_RD,
             HU_IN_IF_ID_BRANCH       => out_MUX_Control(14),
