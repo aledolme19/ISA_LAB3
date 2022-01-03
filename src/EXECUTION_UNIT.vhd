@@ -140,7 +140,7 @@ begin
 	i_MUX_B : MUX_A_B
 		port map(
 			MUX_A_B_in_MEM_WB_Next_PC       => EXECUTION_UNIT_in_MEM_WB_Next_PC,
-			MUX_A_B_in_read_data            => EXECUTION_UNIT_in_read_data1,
+			MUX_A_B_in_read_data            => EXECUTION_UNIT_in_read_data2,
 			MUX_A_B_in_EX_MEM_ALU_result    => EXECUTION_UNIT_in_EX_MEM_ALU_result,
 			MUX_A_B_in_MEM_WB_MUX_WriteData => EXECUTION_UNIT_in_MEM_WB_MUX_WriteData,
 			MUX_A_B_in_sel                  => MuxB_control,

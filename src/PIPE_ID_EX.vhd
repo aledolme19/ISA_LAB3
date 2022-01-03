@@ -132,7 +132,7 @@ begin
 			N => 32
 		)
 		port map(
-			D     => PIPE_ID_EX_in_read_data1,
+			D     => PIPE_ID_EX_in_read_data2,
 			en    => PIPE_ID_EX_ENABLE,
 			rst_n => PIPE_ID_EX_rst,
 			clk   => PIPE_ID_EX_clk,

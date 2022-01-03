@@ -20,7 +20,7 @@ begin
 	begin
 		if PC_in_rst = '0' then
 			PC_output <= (others => '0');
-		elsif rising_edge(PC_in_clk) then
+		elsif falling_edge(PC_in_clk) then
 			if PC_in_en = '1' then
 				PC_output <= PC_input;
 			end if;

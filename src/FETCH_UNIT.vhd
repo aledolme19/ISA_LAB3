@@ -52,7 +52,7 @@ architecture BEHAVIORAL of FETCH_UNIT is
 
 	component INSTRUCTION_MEMORY
 		port(
-			IM_IN_ADDRESS : in  std_logic_vector(4 downto 0);
+			IM_IN_ADDRESS : in  std_logic_vector(6 downto 0);
 			IM_OUT        : out std_logic_vector(31 downto 0)
 		);
 	end component INSTRUCTION_MEMORY;
@@ -80,7 +80,7 @@ begin
 		generic map(N => 32)
 		port map(
 			ADDER_IN_A     => PC_ADD_MEM,
-			ADDER_IN_B     => "00000000000000000000000000000010",
+			ADDER_IN_B     => "00000000000000000000000000000100",
 			ADDER_IN_CARRY => '0',
 			ADDER_OUT_S    => ADD_MUX
 		);
@@ -98,7 +98,7 @@ begin
 
 	i_INSTRUCTION_MEMORY : INSTRUCTION_MEMORY
 		port map(
-			IM_IN_ADDRESS => PC_ADD_MEM(4 downto 0),
+			IM_IN_ADDRESS => PC_ADD_MEM(6 downto 0),
 			IM_OUT        => FETCH_UNIT_out_instructions
 		);
 

@@ -156,5 +156,29 @@ begin
 			en    => PIPE_EX_MEM_ENABLE,
 			Q     => PIPE_EX_MEM_out_MemRead
 		);
+		
+	i_Reg_MemToReg : reg_en_rst_n_falling_edge
+        generic map(
+            N => 2
+        )
+        port map(
+            D     => PIPE_EX_MEM_in_MemtoReg,
+            en    => PIPE_EX_MEM_ENABLE,
+            rst_n => PIPE_EX_MEM_rst,
+            clk   => PIPE_EX_MEM_clk,
+            Q     => PIPE_EX_MEM_out_MemtoReg
+        );
+        
+    i_Reg_RD : reg_en_rst_n_falling_edge
+        generic map(
+            N => 5
+        )
+        port map(
+            D     => PIPE_EX_MEM_in_RD,
+            en    => PIPE_EX_MEM_ENABLE,
+            rst_n => PIPE_EX_MEM_rst,
+            clk   => PIPE_EX_MEM_clk,
+            Q     => PIPE_EX_MEM_out_RD
+        );
 
 end architecture BEHAVIORAL;

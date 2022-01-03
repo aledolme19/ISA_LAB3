@@ -212,7 +212,7 @@ architecture BEHAVIORAL of RISC_V is
 	--I SEGNALI DI ENABLE E RESET DEI DIVERSI STADI DI PIPE SONO STATI CREATI. VEDERE SE TENERLI FISSI, SE TOGLIERLI, E COME GESTIRLI
 
 	---Fetch Unit Signals-----------------------------------------------------------------
-	signal PCSrc_address_ID_MEM                                           : std_logic_vector(31 downto 0);
+	-- signal PCSrc_address_ID_MEM                                           : std_logic_vector(31 downto 0);
 	signal IF_next_PC_PIPE_I, IF_current_PC_PIPE_I, IF_instruction_PIPE_I : std_logic_vector(31 downto 0);
 
 	--PIPE_IF_ID Signals-----------------------------------------------------------------
@@ -220,11 +220,11 @@ architecture BEHAVIORAL of RISC_V is
 	signal Hazard_Control_PC_ID_IF                               : std_logic;
 
 	--Decoding Unit Signals---------------------------------------------------------------
-	signal MEM_WB_RegWrite                                                                                                               : std_logic;
-	signal MEM_WB_WriteData                                                                                                              : std_logic_vector(31 downto 0);
-	signal MEM_WB_RD                                                                                                                     : std_logic_vector(4 downto 0);
-	signal ID_EX_RD                                                                                                                      : std_logic_vector(4 downto 0);
-	signal ID_EX_MemRead                                                                                                                 : std_logic;
+	-- signal MEM_WB_RegWrite                                                                                                               : std_logic;
+	-- signal MEM_WB_WriteData                                                                                                              : std_logic_vector(31 downto 0);
+	-- signal MEM_WB_RD                                                                                                                     : std_logic_vector(4 downto 0);
+	-- signal ID_EX_RD                                                                                                                      : std_logic_vector(4 downto 0);
+	-- signal ID_EX_MemRead                                                                                                                 : std_logic;
 	signal Adder2_PIPE_II                                                                                                                : std_logic_vector(31 downto 0);
 	signal RS1_PIPE_II, RS2_PIPE_II                                                                                                      : std_logic_vector(4 downto 0);
 	signal next_PC_PIPE_II, current_PC_PIPE_II                                                                                           : std_logic_vector(31 downto 0);
@@ -234,7 +234,7 @@ architecture BEHAVIORAL of RISC_V is
 	signal Funct3_PIPE_II                                                                                                                : std_logic_vector(2 downto 0);
 	signal Immediate_PIPE_II                                                                                                             : std_logic_vector(31 downto 0);
 	signal RD_PIPE_II                                                                                                                    : std_logic_vector(4 downto 0);
-	signal DECODING_UNIT_OUT_HAZARD_CONTROL                                                                                              : std_logic;
+	-- signal DECODING_UNIT_OUT_HAZARD_CONTROL                                                                                              : std_logic;
 
 	--PIPE_ID_EX Signals-----------------------------------------------------------------
 	signal PIPE_II_en                                                                                                                    : std_logic; --coming from the HAZARD UNIT

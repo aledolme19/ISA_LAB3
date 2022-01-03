@@ -37,7 +37,7 @@ begin
 	stimuli : process is
 	begin
 		RST_N <= '0';
-		wait for 20 ns;
+		wait for 18 ns;
 
 		RST_N <= '1';
 		wait;

@@ -93,7 +93,7 @@ begin
 				CU_OUT_ALUSrc   <= '1';
 				CU_OUT_RegWrite <= '1';
 				CU_OUT_Jump     <= '0';
-				CU_OUT_MemToReg <= "00";
+				CU_OUT_MemToReg <= "10";
 				CU_OUT_Lui      <= '0';
 				CU_OUT_Auipc    <= '1';
 			--LUI
