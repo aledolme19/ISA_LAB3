@@ -3,12 +3,12 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity COMPARATOR_EQ is
-    generic(N : positive := 32);
-    port(
-        COMPARATOR_EQ_IN0 : in  std_logic_vector(N - 1 downto 0);
-        COMPARATOR_EQ_IN1 : in  std_logic_vector(N - 1 downto 0);
-        COMPARATOR_EQ_OUT : out std_logic
-    );
+	generic(N : positive := 32);
+	port(
+		COMPARATOR_EQ_IN0 : in  std_logic_vector(N - 1 downto 0);
+		COMPARATOR_EQ_IN1 : in  std_logic_vector(N - 1 downto 0);
+		COMPARATOR_EQ_OUT : out std_logic
+	);
 end COMPARATOR_EQ;
 
 --architecture STRUCTURAL of COMPARATOR_EQ is
@@ -48,16 +48,16 @@ end COMPARATOR_EQ;
 --end STRUCTURAL;
 
 architecture BEHAVIORAL of COMPARATOR_EQ is
-    
+
 begin
-    
-    comp : process(COMPARATOR_EQ_IN0, COMPARATOR_EQ_IN1) is
-    begin
-        if(COMPARATOR_EQ_IN0 = COMPARATOR_EQ_IN1) then
-            COMPARATOR_EQ_OUT <= '1';
-        else
-            COMPARATOR_EQ_OUT <= '0';
-        end if;
-    end process comp;
-    
+
+	comp : process(COMPARATOR_EQ_IN0, COMPARATOR_EQ_IN1) is
+	begin
+		if (COMPARATOR_EQ_IN0 = COMPARATOR_EQ_IN1) then
+			COMPARATOR_EQ_OUT <= '1';
+		else
+			COMPARATOR_EQ_OUT <= '0';
+		end if;
+	end process comp;
+
 end BEHAVIORAL;
