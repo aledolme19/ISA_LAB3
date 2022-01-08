@@ -12,8 +12,7 @@ entity FETCH_UNIT is
 		FETCH_UNIT_in_PCscr_value    : in  std_logic_vector(31 downto 0);
 		FETCH_UNIT_in_Hazard_control : in  std_logic;
 		FETCH_UNIT_out_next_PC       : out std_logic_vector(31 downto 0);
-		FETCH_UNIT_out_current_PC    : out std_logic_vector(31 downto 0);
-		FETCH_UNIT_out_instructions  : out std_logic_vector(31 downto 0)
+		FETCH_UNIT_out_current_PC    : out std_logic_vector(31 downto 0)
 	);
 end entity FETCH_UNIT;
 
@@ -50,12 +49,6 @@ architecture BEHAVIORAL of FETCH_UNIT is
 		);
 	end component MUX_PC;
 
-	component INSTRUCTION_MEMORY
-		port(
-			IM_IN_ADDRESS : in  std_logic_vector(6 downto 0);
-			IM_OUT        : out std_logic_vector(31 downto 0)
-		);
-	end component INSTRUCTION_MEMORY;
 
 	--------SIGNALS------------------------------------------------------------------------
 	signal PC_ADD_MEM   : std_logic_vector(31 downto 0); --OUTPUT OF PC
@@ -96,11 +89,7 @@ begin
 			MUX_PC_out          => MUXPC_PC
 		);
 
-	i_INSTRUCTION_MEMORY : INSTRUCTION_MEMORY
-		port map(
-			IM_IN_ADDRESS => PC_ADD_MEM(6 downto 0),
-			IM_OUT        => FETCH_UNIT_out_instructions
-		);
+
 
 	-----------------------OUTPUT-------------------------------------
 	FETCH_UNIT_out_current_PC <= PC_ADD_MEM;
