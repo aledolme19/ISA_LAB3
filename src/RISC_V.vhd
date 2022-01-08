@@ -216,7 +216,7 @@ architecture BEHAVIORAL of RISC_V is
 
     ---Fetch Unit Signals-----------------------------------------------------------------
     -- signal PCSrc_address_ID_MEM                                           : std_logic_vector(31 downto 0);
-    signal IF_next_PC_PIPE_I, IF_current_PC_PIPE_I, IF_instruction_PIPE_I : std_logic_vector(31 downto 0);
+    signal IF_next_PC_PIPE_I, IF_current_PC_PIPE_I : std_logic_vector(31 downto 0);
 
     --PIPE_IF_ID Signals-----------------------------------------------------------------
     signal PIPE_I_next_PC, PIPE_I_current_PC, PIPE_I_instruction : std_logic_vector(31 downto 0);
@@ -266,7 +266,7 @@ architecture BEHAVIORAL of RISC_V is
     signal PCSrc : std_logic;
 
     --Memory Unit signals----------------------------------------------------------------
-    signal next_PC_PIPE_IV, ReadData_PIPE_IV, ALUResult_PIPE_IV : std_logic_vector(31 downto 0);
+    signal next_PC_PIPE_IV, ALUResult_PIPE_IV : std_logic_vector(31 downto 0);
     signal Jump_PIPE_IV, RegWrite_PIPE_IV                       : std_logic;
     signal MemtoReg_PIPE_IV                                     : std_logic_vector(1 downto 0);
     signal RD_PIPE_IV                                           : std_logic_vector(4 downto 0);
