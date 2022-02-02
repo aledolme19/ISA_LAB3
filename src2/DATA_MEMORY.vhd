@@ -111,26 +111,26 @@ end entity DATA_MEMORY;
 
 architecture BEHAVIORAL of DATA_MEMORY is
 
-    type matrix is array (0 to 127) of std_logic_vector(data_length-1 downto 0);
-    constant rom : matrix := (
-        0      => std_logic_vector(to_signed(10, 32)),
-        4      => std_logic_vector(to_signed(-47, 32)),
-        8      => std_logic_vector(to_signed(22, 32)),
-        12     => std_logic_vector(to_signed(-3, 32)),
-        16     => std_logic_vector(to_signed(15, 32)),
-        20     => std_logic_vector(to_signed(27, 32)),
-        24     => std_logic_vector(to_signed(-4, 32)),
-        others => X"00000000"
-    );
+	type matrix is array (0 to 127) of std_logic_vector(data_length - 1 downto 0);
+	constant rom : matrix := (
+		0      => std_logic_vector(to_signed(10, 32)),
+		4      => std_logic_vector(to_signed(-47, 32)),
+		8      => std_logic_vector(to_signed(22, 32)),
+		12     => std_logic_vector(to_signed(-3, 32)),
+		16     => std_logic_vector(to_signed(15, 32)),
+		20     => std_logic_vector(to_signed(27, 32)),
+		24     => std_logic_vector(to_signed(-4, 32)),
+		others => X"00000000"
+	);
 
 begin
 
-    decoder : process(DM_IN_ADDRESS) is
-        variable index : natural;
-    begin
-        index  := to_integer(unsigned(DM_IN_ADDRESS));
-        DM_OUT <= rom(index);
-    end process decoder;
+	decoder : process(DM_IN_ADDRESS) is
+		variable index : natural;
+	begin
+		index  := to_integer(unsigned(DM_IN_ADDRESS));
+		DM_OUT <= rom(index);
+	end process decoder;
 
 end architecture BEHAVIORAL;
 

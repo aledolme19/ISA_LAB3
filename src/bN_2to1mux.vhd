@@ -22,16 +22,16 @@ architecture BEHAVIORAL of bN_2to1mux is
 
 begin
 
-    i_MUX_2to1 : process(x, y, s)
-    begin
-        case s is
-            when '0' =>
-                output <= x;
-            when '1' =>
-                output <= y;
-            when others =>
-                output <= (others => '0');
-        end case;
-    end process;
+	i_MUX_2to1 : process(x, y, s)
+	begin
+		case s is
+			when '0' =>
+				output <= x;
+			when '1' =>
+				output <= y;
+			when others =>
+				output <= (others => '0');
+		end case;
+	end process;
 
 end architecture BEHAVIORAL;

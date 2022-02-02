@@ -44,7 +44,7 @@ begin
 			ALU_CONTROL_OUT <= "0010";
 		--ABS
 		elsif ALU_CONTROL_IN_ALUOP = "10" and ALU_CONTROL_IN_FUNCT3 = "111" then
-            ALU_CONTROL_OUT <= "0101";
+			ALU_CONTROL_OUT <= "0101";
 		else
 			ALU_CONTROL_OUT <= "----";
 		end if;

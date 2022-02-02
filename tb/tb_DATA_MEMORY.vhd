@@ -9,7 +9,7 @@ architecture testbench of tb_DATA_MEMORY is
 
 	component DATA_MEMORY
 		generic(
-			data_length        : positive := 32;
+			data_length    : positive := 32;
 			address_length : positive := 5
 		);
 		port(
@@ -48,7 +48,7 @@ begin
 
 	i_DM : component DATA_MEMORY
 		generic map(
-			data_length        => width,
+			data_length    => width,
 			address_length => address_bits
 		)
 		port map(

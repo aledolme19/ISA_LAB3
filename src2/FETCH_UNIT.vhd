@@ -49,7 +49,6 @@ architecture BEHAVIORAL of FETCH_UNIT is
 		);
 	end component MUX_PC;
 
-
 	--------SIGNALS------------------------------------------------------------------------
 	signal PC_ADD_MEM   : std_logic_vector(31 downto 0); --OUTPUT OF PC
 	signal MUXPC_PC     : std_logic_vector(31 downto 0);
@@ -88,8 +87,6 @@ begin
 			MUX_PC_in_sel       => MUX_selector,
 			MUX_PC_out          => MUXPC_PC
 		);
-
-
 
 	-----------------------OUTPUT-------------------------------------
 	FETCH_UNIT_out_current_PC <= PC_ADD_MEM;

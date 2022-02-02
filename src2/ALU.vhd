@@ -69,13 +69,13 @@ architecture BEHAVIORAL of ALU is
 			COMPARATOR_EQ_OUT  : out std_logic
 		);
 	end component COMPARATOR_EQUAL_NBIT;
-	
+
 	component ABSOLUTE_VALUE
-	    generic(N : positive := 32);
-	    port(
-	        ABSOLUTE_VALUE_IN  : in  std_logic_vector(N - 1 downto 0);
-	        ABSOLUTE_VALUE_OUT : out std_logic_vector(N - 1 downto 0)
-	    );
+		generic(N : positive := 32);
+		port(
+			ABSOLUTE_VALUE_IN  : in  std_logic_vector(N - 1 downto 0);
+			ABSOLUTE_VALUE_OUT : out std_logic_vector(N - 1 downto 0)
+		);
 	end component ABSOLUTE_VALUE;
 
 	signal ADD_OUT  : std_logic_vector(N - 1 downto 0);
@@ -83,8 +83,8 @@ architecture BEHAVIORAL of ALU is
 	signal XOR_OUT  : std_logic_vector(N - 1 downto 0);
 	signal SLT_OUT  : std_logic_vector(N - 1 downto 0);
 	signal SRAI_OUT : std_logic_vector(N - 1 downto 0);
-    signal ABS_OUT : std_logic_vector(N - 1 downto 0);
-    
+	signal ABS_OUT  : std_logic_vector(N - 1 downto 0);
+
 begin
 
 	i_ADD : component ADDER2_NBIT
@@ -156,15 +156,14 @@ begin
 		SRAI_OUT when "0100",
 		ABS_OUT when "0101",
 		(N - 1 downto 0 => '-') when others;
-		
-    
-    i_absolute: component ABSOLUTE_VALUE
-        generic map(
-            N => N
-        )
-        port map(
-            ABSOLUTE_VALUE_IN  => ALU_IN_A,
-            ABSOLUTE_VALUE_OUT => ABS_OUT
-        );
+
+	i_absolute : component ABSOLUTE_VALUE
+		generic map(
+			N => N
+		)
+		port map(
+			ABSOLUTE_VALUE_IN  => ALU_IN_A,
+			ABSOLUTE_VALUE_OUT => ABS_OUT
+		);
 
 end architecture BEHAVIORAL;

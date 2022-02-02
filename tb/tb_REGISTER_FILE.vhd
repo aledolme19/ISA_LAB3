@@ -9,7 +9,7 @@ architecture testbench of tb_REGISTER_FILE is
 
 	component REGISTER_FILE
 		generic(
-			data_length        : positive := 32;
+			data_length    : positive := 32;
 			address_length : positive := 5
 		);
 		port(
@@ -48,7 +48,7 @@ begin
 
 	i_RF : component REGISTER_FILE
 		generic map(
-			data_length        => 32,
+			data_length    => 32,
 			address_length => 5
 		)
 		port map(

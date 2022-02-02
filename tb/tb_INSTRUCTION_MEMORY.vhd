@@ -9,12 +9,12 @@ architecture behavioral of tb_INSTRUCTION_MEMORY is
 
 	component INSTRUCTION_MEMORY
 		port(
-			IM_IN_ADDRESS : in  std_logic_vector(4 downto 0);
+			IM_IN_ADDRESS : in  std_logic_vector(6 downto 0);
 			IM_OUT        : out std_logic_vector(31 downto 0)
 		);
 	end component INSTRUCTION_MEMORY;
 
-	signal ADDRESS  : std_logic_vector(4 downto 0);
+	signal ADDRESS  : std_logic_vector(6 downto 0);
 	signal DATA_OUT : std_logic_vector(31 downto 0); -- @suppress "signal DATA_OUT is never read"
 
 begin
@@ -27,7 +27,7 @@ begin
 
 	stimuli : process is
 	begin
-		for index in 0 to 31 loop
+		for index in 0 to 127 loop
 			ADDRESS <= std_logic_vector(to_unsigned(index, ADDRESS'length));
 			wait for 10 ns;
 		end loop;
