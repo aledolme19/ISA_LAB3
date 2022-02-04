@@ -1,0 +1,492 @@
+# //  ModelSim SE 6.2g Feb 21 2007 Linux 3.10.0-957.5.1.el7.x86_64
+# //
+# //  Copyright 1991-2007 Mentor Graphics Corporation
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+source compile.tcl
+# Model Technology ModelSim SE vlog 6.2g Compiler 2007.02 Feb 21 2007
+# -- Compiling module RISC_V
+# 
+# Top level modules:
+# 	RISC_V
+# Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package numeric_std
+# -- Compiling entity data_memory
+# -- Compiling architecture behavioral of data_memory
+# Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package numeric_std
+# -- Compiling entity instruction_memory
+# -- Compiling architecture behavioral of instruction_memory
+# Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package numeric_std
+# -- Compiling entity tb_risc_v
+# -- Compiling architecture test of tb_risc_v
+# ** Error: ../tb/tb_RISC_V.vhd(102): (vcom-1136) Unknown identifier "period".
+# ** Error: ../tb/tb_RISC_V.vhd(102): (vcom-1136) Unknown identifier "period".
+# ** Error: ../tb/tb_RISC_V.vhd(102): Bad expression in left operand of infix expression "-".
+# ** Error: ../tb/tb_RISC_V.vhd(102): Bad expression in right operand of infix expression "-".
+# ** Error: ../tb/tb_RISC_V.vhd(102): Type error resolving infix expression "-" as type std.standard.time.
+# ** Error: ../tb/tb_RISC_V.vhd(108): VHDL Compiler exiting
+# /software/mentor/modelsim_6.2g/linux/vcom failed.
+source compile.tcl
+# Model Technology ModelSim SE vlog 6.2g Compiler 2007.02 Feb 21 2007
+# -- Compiling module RISC_V
+# 
+# Top level modules:
+# 	RISC_V
+# Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package numeric_std
+# -- Compiling entity data_memory
+# -- Compiling architecture behavioral of data_memory
+# Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package numeric_std
+# -- Compiling entity instruction_memory
+# -- Compiling architecture behavioral of instruction_memory
+# Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package numeric_std
+# -- Compiling entity tb_risc_v
+# -- Compiling architecture test of tb_risc_v
+# ** Error: ../tb/tb_RISC_V.vhd(103): No feasible entries for infix operator "-".
+# ** Error: ../tb/tb_RISC_V.vhd(103): Type error resolving infix expression "-" as type std.standard.time.
+# ** Error: ../tb/tb_RISC_V.vhd(109): VHDL Compiler exiting
+# /software/mentor/modelsim_6.2g/linux/vcom failed.
+source compile.tcl
+# Model Technology ModelSim SE vlog 6.2g Compiler 2007.02 Feb 21 2007
+# -- Compiling module RISC_V
+# 
+# Top level modules:
+# 	RISC_V
+# Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package numeric_std
+# -- Compiling entity data_memory
+# -- Compiling architecture behavioral of data_memory
+# Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package numeric_std
+# -- Compiling entity instruction_memory
+# -- Compiling architecture behavioral of instruction_memory
+# Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package numeric_std
+# -- Compiling entity tb_risc_v
+# -- Compiling architecture test of tb_risc_v
+# vsim -L /software/dk/nangate45/verilog/msim6.2g work.tb_RISC_V 
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading /software/mentor/modelsim_6.2g/linux/../std.standard
+# Loading /software/mentor/modelsim_6.2g/linux/../ieee.std_logic_1164(body)
+# Loading /software/mentor/modelsim_6.2g/linux/../ieee.numeric_std(body)
+# Loading work.tb_risc_v(test)#1
+# Loading work.instruction_memory(behavioral)
+# Loading work.data_memory(behavioral)#1
+# Loading work.RISC_V(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.CLKBUF_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AND2_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.MUX2_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.INV_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.BUF_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.BUF_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.DFFR_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NOR2_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NAND2_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI21_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OR2_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.XNOR2_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI21_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.XOR2_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI21_X4(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI222_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.CLKBUF_X3(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NAND3_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI22_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NAND4_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AND3_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.INV_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.BUF_X4(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AND2_X4(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AND2_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI211_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AND4_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NOR3_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI211_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NAND2_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NAND4_X4(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI21_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OR2_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI21_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NOR2_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.INV_X4(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OR3_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI33_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI211_X4(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NOR4_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NOR3_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AND3_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI22_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI222_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI222_X4(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.MUX2_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.CLKBUF_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI221_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI221_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI222_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AND4_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI221_X4(fast)
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9584): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_4_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9587): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_5_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9605): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_11_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9608): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_12_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9611): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_13_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9614): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_14_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9617): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_15_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9620): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_16_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9623): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_17_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9626): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_18_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9629): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_19_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9632): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_20_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9635): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_21_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9638): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_22_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9641): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_23_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9653): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_27_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9656): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_28_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9659): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_29_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9662): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_30_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9665): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_31_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(12210): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_I_IF_ID_i_PIPE_instructions_Q_reg_5_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(38676): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_II_ID_EX_i_Reg_Read_Data1_Q_reg_15_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(38960): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_II_ID_EX_i_reg_Read_Data2_Q_reg_0_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(39171): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_II_ID_EX_i_FF_ALUScr_Q_reg
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(45864): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_III_EX_MEM_i_FF_ALU_Zero_Q_reg
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(46503): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_III_EX_MEM_i_Reg_ReadData2_out_Q_reg_5_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(46562): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_III_EX_MEM_i_Reg_ReadData2_out_Q_reg_15_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(46591): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_III_EX_MEM_i_Reg_ReadData2_out_Q_reg_20_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(46596): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_III_EX_MEM_i_Reg_ReadData2_out_Q_reg_21_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(46619): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_III_EX_MEM_i_Reg_ReadData2_out_Q_reg_25_
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_risc_v/i_data_memory
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_risc_v/i_instruction_memory
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 3  Instance: /tb_risc_v/i_instruction_memory
+# ** Error: (vsim-3601) Iteration limit reached at time 0 ns.
+vsim -L /software/dk/nangate45/verilog/msim6.2g -t ps work.tb_risc_v
+# vsim -L /software/dk/nangate45/verilog/msim6.2g -t ps work.tb_risc_v 
+# Loading /software/mentor/modelsim_6.2g/linux/../std.standard
+# Loading /software/mentor/modelsim_6.2g/linux/../ieee.std_logic_1164(body)
+# Loading /software/mentor/modelsim_6.2g/linux/../ieee.numeric_std(body)
+# Loading work.tb_risc_v(test)#1
+# Loading work.instruction_memory(behavioral)
+# Loading work.data_memory(behavioral)#1
+# Loading work.RISC_V(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.CLKBUF_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AND2_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.MUX2_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.INV_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.BUF_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.BUF_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.DFFR_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NOR2_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NAND2_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI21_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OR2_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.XNOR2_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI21_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.XOR2_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI21_X4(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI222_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.CLKBUF_X3(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NAND3_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI22_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NAND4_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AND3_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.INV_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.BUF_X4(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AND2_X4(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AND2_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI211_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AND4_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NOR3_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI211_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NAND2_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NAND4_X4(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI21_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OR2_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI21_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NOR2_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.INV_X4(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OR3_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI33_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI211_X4(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NOR4_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NOR3_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AND3_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI22_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI222_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI222_X4(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.MUX2_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.CLKBUF_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI221_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI221_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI222_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AND4_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI221_X4(fast)
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9584): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_4_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9587): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_5_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9605): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_11_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9608): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_12_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9611): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_13_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9614): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_14_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9617): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_15_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9620): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_16_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9623): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_17_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9626): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_18_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9629): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_19_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9632): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_20_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9635): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_21_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9638): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_22_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9641): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_23_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9653): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_27_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9656): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_28_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9659): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_29_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9662): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_30_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9665): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_31_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(12210): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_I_IF_ID_i_PIPE_instructions_Q_reg_5_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(38676): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_II_ID_EX_i_Reg_Read_Data1_Q_reg_15_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(38960): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_II_ID_EX_i_reg_Read_Data2_Q_reg_0_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(39171): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_II_ID_EX_i_FF_ALUScr_Q_reg
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(45864): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_III_EX_MEM_i_FF_ALU_Zero_Q_reg
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(46503): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_III_EX_MEM_i_Reg_ReadData2_out_Q_reg_5_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(46562): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_III_EX_MEM_i_Reg_ReadData2_out_Q_reg_15_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(46591): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_III_EX_MEM_i_Reg_ReadData2_out_Q_reg_20_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(46596): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_III_EX_MEM_i_Reg_ReadData2_out_Q_reg_21_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(46619): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_III_EX_MEM_i_Reg_ReadData2_out_Q_reg_25_
+source compile.tcl
+# Model Technology ModelSim SE vlog 6.2g Compiler 2007.02 Feb 21 2007
+# -- Compiling module RISC_V
+# 
+# Top level modules:
+# 	RISC_V
+# Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package numeric_std
+# -- Compiling entity data_memory
+# -- Compiling architecture behavioral of data_memory
+# Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package numeric_std
+# -- Compiling entity instruction_memory
+# -- Compiling architecture behavioral of instruction_memory
+# Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package numeric_std
+# -- Compiling entity tb_risc_v
+# -- Compiling architecture test of tb_risc_v
+# vsim -L /software/dk/nangate45/verilog/msim6.2g -t ps work.tb_RISC_V 
+# Loading /software/mentor/modelsim_6.2g/linux/../std.standard
+# Loading /software/mentor/modelsim_6.2g/linux/../ieee.std_logic_1164(body)
+# Loading /software/mentor/modelsim_6.2g/linux/../ieee.numeric_std(body)
+# Loading work.tb_risc_v(test)#1
+# Loading work.instruction_memory(behavioral)
+# Loading work.data_memory(behavioral)#1
+# Loading work.RISC_V(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.CLKBUF_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AND2_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.MUX2_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.INV_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.BUF_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.BUF_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.DFFR_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NOR2_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NAND2_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI21_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OR2_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.XNOR2_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI21_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.XOR2_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI21_X4(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI222_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.CLKBUF_X3(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NAND3_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI22_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NAND4_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AND3_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.INV_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.BUF_X4(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AND2_X4(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AND2_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI211_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AND4_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NOR3_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI211_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NAND2_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NAND4_X4(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI21_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OR2_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI21_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NOR2_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.INV_X4(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OR3_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI33_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI211_X4(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NOR4_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.NOR3_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AND3_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI22_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI222_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI222_X4(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.MUX2_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.CLKBUF_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI221_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI221_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.OAI222_X1(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AND4_X2(fast)
+# Loading /software/dk/nangate45/verilog/msim6.2g.AOI221_X4(fast)
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9584): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_4_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9587): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_5_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9605): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_11_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9608): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_12_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9611): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_13_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9614): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_14_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9617): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_15_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9620): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_16_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9623): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_17_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9626): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_18_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9629): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_19_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9632): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_20_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9635): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_21_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9638): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_22_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9641): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_23_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9653): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_27_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9656): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_28_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9659): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_29_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9662): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_30_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(9665): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_FETCH_UNIT_i_PC_PC_output_reg_31_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(12210): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_I_IF_ID_i_PIPE_instructions_Q_reg_5_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(38676): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_II_ID_EX_i_Reg_Read_Data1_Q_reg_15_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(38960): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_II_ID_EX_i_reg_Read_Data2_Q_reg_0_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(39171): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_II_ID_EX_i_FF_ALUScr_Q_reg
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(45864): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_III_EX_MEM_i_FF_ALU_Zero_Q_reg
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(46503): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_III_EX_MEM_i_Reg_ReadData2_out_Q_reg_5_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(46562): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_III_EX_MEM_i_Reg_ReadData2_out_Q_reg_15_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(46591): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_III_EX_MEM_i_Reg_ReadData2_out_Q_reg_20_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(46596): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_III_EX_MEM_i_Reg_ReadData2_out_Q_reg_21_
+# ** Warning: (vsim-3017) ../netlist/RISC_V.v(46619): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /tb_risc_v/i_risc_v/i_PIPE_III_EX_MEM_i_Reg_ReadData2_out_Q_reg_25_
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_risc_v/i_data_memory
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_risc_v/i_instruction_memory
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 3  Instance: /tb_risc_v/i_instruction_memory

@@ -1,0 +1,2 @@
+line#      309: Warning:  ../src/MUX_A_B.vhd:23: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+line#      645: Warning: Design 'RISC_V' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
