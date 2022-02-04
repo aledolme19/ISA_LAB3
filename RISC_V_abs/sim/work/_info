@@ -1,0 +1,101 @@
+m255
+13
+cModel Technology
+d/home/isa04_2021_2022/ISA_LAB3/RISC_V_abs/sim
+T_opt
+Va7U]>FX9K0N7^^f>hl9:`3
+06 9 4 ./work tb_risc_v test 1
+o-quiet -auto_acc_if_foreign -work work -L /software/dk/nangate45/verilog/msim6.2g
+tExplicit 1
+OE;O;6.2g;35
+Edata_memory
+w1644004486
+DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+8../tb/DATA_MEMORY.vhd
+F../tb/DATA_MEMORY.vhd
+l0
+L5
+V1a>B?V^PM=V^CL3eS;[8a1
+OE;C;6.2g;35
+31
+o-93 -work work
+tExplicit 1
+Abehavioral
+DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+DE work data_memory 1a>B?V^PM=V^CL3eS;[8a1
+l126
+L112
+VGj2[]^;5g04PQUBiJiNZk0
+OE;C;6.2g;35
+31
+M2 ieee std_logic_1164
+M1 ieee numeric_std
+o-93 -work work
+tExplicit 1
+Einstruction_memory
+w1644004485
+DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+8../tb/INSTRUCTION_MEMORY.vhd
+F../tb/INSTRUCTION_MEMORY.vhd
+l0
+L5
+V`@07R4@52Bcl^WQN9V5163
+OE;C;6.2g;35
+31
+o-93 -work work
+tExplicit 1
+Abehavioral
+DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+DE work instruction_memory `@07R4@52Bcl^WQN9V5163
+l38
+L12
+V[HRMYj^^=GMX8M^A?;cgZ3
+OE;C;6.2g;35
+31
+M2 ieee std_logic_1164
+M1 ieee numeric_std
+o-93 -work work
+tExplicit 1
+vRISC_V
+IdNOS6gOUN]>a^383hXoL00
+V9Q9TIZaZdQRaAMG]W=V6o2
+w1644008650
+8../netlist/RISC_V.v
+F../netlist/RISC_V.v
+L0 8
+V9Q9TIZaZdQRaAMG]W=V6o2
+OE;L;6.2g;35
+r1
+31
+o-work work
+n@r@i@s@c_@v
+Etb_risc_v
+w1644003087
+DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+8../tb/tb_RISC_V.vhd
+F../tb/tb_RISC_V.vhd
+l0
+L5
+VYLL;odIoR6iJ83N4mn:<K0
+OE;C;6.2g;35
+31
+o-93 -work work
+tExplicit 1
+Atest
+DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+DE work tb_risc_v YLL;odIoR6iJ83N4mn:<K0
+l54
+L8
+V9;iD75[5Z:n;HKiO>DMhQ2
+OE;C;6.2g;35
+31
+M2 ieee std_logic_1164
+M1 ieee numeric_std
+o-93 -work work
+tExplicit 1

@@ -1,0 +1,219 @@
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : RISC_V
+Version: O-2018.06-SP4
+Date   : Fri Feb  4 22:03:23 2022
+****************************************
+
+
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /software/dk/nangate45/synopsys/NangateOpenCellLibrary_typical_ecsm_nowlm.db)
+
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+Design        Wire Load Model            Library
+------------------------------------------------
+RISC_V                 5K_hvratio_1_1    NangateOpenCellLibrary
+
+
+Global Operating Voltage = 1.1  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+RISC_V                                 1.30e+03 8.09e+03 3.31e+05 9.72e+03 100.0
+  i_WRITE_BACK_UNIT (WRITE_BACK_UNIT)     1.132    0.608 1.30e+03    3.040   0.0
+  i_PIPE_IV_MEM_WB (PIPE_MEM_WB)        172.202  555.046 1.44e+04  741.655   7.6
+    i_Reg_RD (reg_en_rst_n_falling_edge_N5_1)
+                                          8.447   25.580  720.601   34.748   0.4
+    i_Reg_MemtoReg (reg_en_rst_n_falling_edge_N2_1)
+                                          2.283   11.367  273.958   13.923   0.1
+    i_FF_PCScr (flipflop_en_rst_n_falling_edge_1)
+                                          1.085    6.290  143.920    7.519   0.1
+    i_FF_RegWrite (flipflop_en_rst_n_falling_edge_2)
+                                          1.174    6.358  144.386    7.676   0.1
+    i_FF_Jump (flipflop_en_rst_n_falling_edge_3)
+                                          1.083    6.293  143.923    7.520   0.1
+    i_Reg_ReadData (reg_en_rst_n_falling_edge_N32_1)
+                                         56.856  174.340 4.50e+03  235.696   2.4
+    i_Reg_ALUResult (reg_en_rst_n_falling_edge_N32_2)
+                                         49.106  161.005 4.23e+03  214.340   2.2
+    i_Reg_Next_PC (reg_en_rst_n_falling_edge_N32_3)
+                                         52.169  163.813 4.25e+03  220.233   2.3
+  i_MEMORY_UNIT (MEMORY_UNIT)             0.000    0.000    0.000    0.000   0.0
+  i_PIPE_III_EX_MEM (PIPE_EX_MEM)       223.398  721.541 1.96e+04  964.572   9.9
+    i_Reg_RD (reg_en_rst_n_falling_edge_N5_2)
+                                          7.912   25.428  688.396   34.028   0.4
+    i_Reg_MemToReg (reg_en_rst_n_falling_edge_N2_2)
+                                          2.268   11.386  273.995   13.928   0.1
+    i_FF_MemRead (flipflop_en_rst_n_falling_edge_4)
+                                          1.087    6.289  143.964    7.519   0.1
+    i_FF_Jump (flipflop_en_rst_n_falling_edge_5)
+                                          1.083    6.296  143.915    7.524   0.1
+    i_FF_MemWrite (flipflop_en_rst_n_falling_edge_6)
+                                          1.088    6.291  143.970    7.523   0.1
+    i_FF_Branch (flipflop_en_rst_n_falling_edge_7)
+                                          1.089    6.294  143.908    7.527   0.1
+    i_FF_RegWrite (flipflop_en_rst_n_falling_edge_8)
+                                          1.146    6.373  144.430    7.663   0.1
+    i_Reg_ReadData2_out (reg_en_rst_n_falling_edge_N32_4)
+                                         48.817  159.877 4.10e+03  212.791   2.2
+    i_Reg_ALU_Result (reg_en_rst_n_falling_edge_N32_5)
+                                         49.694  160.931 5.06e+03  215.683   2.2
+    i_FF_ALU_Zero (flipflop_en_rst_n_falling_edge_9)
+                                          1.293    5.530  156.077    6.979   0.1
+    i_Reg_NextPC (reg_en_rst_n_falling_edge_N32_6)
+                                         50.850  164.198 4.25e+03  219.301   2.3
+    i_Reg_ADDER_2 (reg_en_rst_n_falling_edge_N32_7)
+                                         57.070  162.650 4.39e+03  224.107   2.3
+  i_EXECUTION_UNIT (EXECUTION_UNIT)      30.058   23.358 5.05e+04  103.885   1.1
+    i_ALU (ALU_N32)                      19.107   11.720 3.64e+04   67.190   0.7
+      i_absolute (ABSOLUTE_VALUE_N32)     0.702    0.654 4.97e+03    6.326   0.1
+        sub_abs_17 (ABSOLUTE_VALUE_N32_DW01_sub_1)
+                                          0.608    0.573 3.94e+03    5.120   0.1
+      i_ZERO (COMPARATOR_EQUAL_NBIT_N32)
+                                          0.343    1.023 1.33e+03    2.692   0.0
+      i_SRAI (SHIFT_RIGHT_NBIT_N32)       2.904    1.757 1.18e+04   16.428   0.2
+      i_SLT (COMPARATOR_LESSTHAN_NBIT_N32)
+                                          0.712    0.873 2.66e+03    4.242   0.0
+        lt_20 (COMPARATOR_LESSTHAN_NBIT_N32_DW_cmp_1)
+                                          0.712    0.873 2.66e+03    4.242   0.0
+      i_XOR (XOR2_NBIT_N32)               0.208    0.788  846.257    1.842   0.0
+      i_AND (AND2_NBIT_N32)            2.98e-02 6.59e-02  652.253    0.748   0.0
+      i_ADD (ADDER2_NBIT_N32_1)           2.492    1.869 8.42e+03   12.777   0.1
+        add_1_root_add_33_2 (ADDER2_NBIT_N32_1_DW01_add_2)
+                                          2.492    1.869 8.42e+03   12.777   0.1
+    i_ALU_CONTROL (ALU_CONTROL)           2.255    1.459  478.032    4.192   0.0
+    i_MUX3 (bN_2to1mux_N32_1)             2.566    1.057 1.91e+03    5.536   0.1
+    i_MUX2 (MUX_AUIPC_LUI)                1.009    0.360 3.08e+03    4.448   0.0
+    i_MUX_B (MUX_A_B_1)                   0.178    0.146 3.25e+03    3.572   0.0
+    i_MUX_A (MUX_A_B_0)                   0.143    0.140 3.28e+03    3.564   0.0
+    i_FORWARDING_UNIT (FORWARDING_UNIT)
+                                          4.800    8.475 2.11e+03   15.382   0.2
+      i_isZERO_MEM_WB_RD (COMPARATOR_EQ_N5_1)
+                                          0.360    0.723  254.645    1.338   0.0
+      i_isZERO_EX_MEM_RD (COMPARATOR_EQ_N5_2)
+                                          0.470    0.903  565.550    1.938   0.0
+      i_COMP_ID_EX_RS2_MEM_WB_RD (COMPARATOR_EQ_N5_3)
+                                          1.063    1.652  260.238    2.975   0.0
+      i_COMP_ID_EX_RS2_EX_MEM_RD (COMPARATOR_EQ_N5_4)
+                                          0.720    1.543  235.305    2.498   0.0
+      i_COMP_ID_EX_RS1_MEM_WB_RD (COMPARATOR_EQ_N5_5)
+                                          0.758    1.505  235.594    2.498   0.0
+      i_COMP_ID_EX_RS1_EX_MEM_RD (COMPARATOR_EQ_N5_6)
+                                          0.721    1.550  235.555    2.507   0.0
+  i_PIPE_II_ID_EX (PIPE_ID_EX)          358.502 1.13e+03 3.00e+04 1.52e+03  15.6
+    i_reg_RD (reg_en_rst_n_falling_edge_N5_3)
+                                          7.883   25.312  690.497   33.886   0.3
+    i_reg_Immediate (reg_en_rst_n_falling_edge_N32_8)
+                                         55.882  154.917 4.40e+03  215.199   2.2
+    i_reg_Funct3 (reg_en_rst_n_falling_edge_N3)
+                                          4.402   15.646  420.218   20.468   0.2
+    i_reg_MemtoReg (reg_en_rst_n_falling_edge_N2_3)
+                                          2.272   11.397  274.043   13.943   0.1
+    i_reg_ALUOp (reg_en_rst_n_falling_edge_N2_0)
+                                          2.320   11.373  273.934   13.967   0.1
+    i_FF_Jump (flipflop_en_rst_n_falling_edge_10)
+                                          1.088    6.296  143.909    7.528   0.1
+    i_FF_MemWrite (flipflop_en_rst_n_falling_edge_11)
+                                          1.083    6.287  143.972    7.514   0.1
+    i_FF_ALUScr (flipflop_en_rst_n_falling_edge_12)
+                                          1.324    6.357  144.408    7.825   0.1
+    i_FF_Branch (flipflop_en_rst_n_falling_edge_13)
+                                          1.087    6.290  143.901    7.522   0.1
+    i_FF_AUIP (flipflop_en_rst_n_falling_edge_14)
+                                          1.084    6.285  143.923    7.513   0.1
+    i_FF_MemRead (flipflop_en_rst_n_falling_edge_15)
+                                          1.085    6.285  143.964    7.515   0.1
+    i_FF_RegWrite (flipflop_en_rst_n_falling_edge_16)
+                                          1.121    6.383  144.484    7.648   0.1
+    i_FF_LUI (flipflop_en_rst_n_falling_edge_0)
+                                          1.087    6.292  143.973    7.523   0.1
+    i_reg_Read_Data2 (reg_en_rst_n_falling_edge_N32_9)
+                                         48.772  159.907 4.23e+03  212.906   2.2
+    i_Reg_Read_Data1 (reg_en_rst_n_falling_edge_N32_10)
+                                         48.751  159.864 4.23e+03  212.842   2.2
+    i_Reg_Current_PC (reg_en_rst_n_falling_edge_N32_11)
+                                         51.092  164.215 4.25e+03  219.561   2.3
+    i_Reg_ADDER_2 (reg_en_rst_n_falling_edge_N32_12)
+                                         57.160  162.755 4.40e+03  224.315   2.3
+    i_Reg_Next_PC (reg_en_rst_n_falling_edge_N32_13)
+                                         51.084  164.779 4.26e+03  220.118   2.3
+    i_Reg_RS2 (reg_en_rst_n_falling_edge_N5_4)
+                                          7.695   25.416  690.113   33.801   0.3
+    i_Reg_RS1 (reg_en_rst_n_falling_edge_N5_0)
+                                          7.701   25.250  690.751   33.642   0.3
+  i_DECODING_UNIT (DECODING_UNIT)       276.752 4.98e+03 1.88e+05 5.44e+03  56.0
+    i_HAZARD_UNIT (HAZARD_UNIT)           1.636    3.446  710.240    5.792   0.1
+      i_COMP_RS2_RD (COMPARATOR_EQ_N5_7)
+                                          0.789    1.691  233.905    2.714   0.0
+      i_COMP_RS1_RD (COMPARATOR_EQ_N5_0)
+                                          0.786    1.702  234.858    2.723   0.0
+    i_ADDER2 (ADDER2_NBIT_N32_2)         32.881   24.374 8.26e+03   65.519   0.7
+      add_1_root_add_33_2 (ADDER2_NBIT_N32_2_DW01_add_1)
+                                         32.881   24.374 8.26e+03   65.519   0.7
+    i_IMMEDIATE_UNIT (IMM_GEN)           13.069    7.160 2.48e+03   22.705   0.2
+    i_MUX_CONTROL (bN_2to1mux_N15)        0.322    0.816  463.885    1.602   0.0
+    i_CONTROL_UNIT (CONTROL_UNIT)         1.239    0.617  676.542    2.533   0.0
+    i_REGISTER_FILE (REGISTER_FILE_data_length32_address_length5)
+                                        222.982 4.94e+03 1.74e+05 5.33e+03  54.9
+      REG_31 (reg_en_rst_n_N32_1)         3.147  158.140 4.15e+03  165.439   1.7
+      REG_30 (reg_en_rst_n_N32_2)         3.147  158.100 4.15e+03  165.399   1.7
+      REG_29 (reg_en_rst_n_N32_3)         3.134  158.194 4.15e+03  165.479   1.7
+      REG_28 (reg_en_rst_n_N32_4)         3.149  158.181 4.15e+03  165.480   1.7
+      REG_27 (reg_en_rst_n_N32_5)         3.136  158.115 4.15e+03  165.402   1.7
+      REG_26 (reg_en_rst_n_N32_6)         3.140  158.103 4.15e+03  165.394   1.7
+      REG_25 (reg_en_rst_n_N32_7)         3.118  158.171 4.15e+03  165.440   1.7
+      REG_24 (reg_en_rst_n_N32_8)         3.106  158.196 4.15e+03  165.453   1.7
+      REG_23 (reg_en_rst_n_N32_9)         3.137  158.150 4.15e+03  165.438   1.7
+      REG_22 (reg_en_rst_n_N32_10)        3.126  158.168 4.15e+03  165.445   1.7
+      REG_21 (reg_en_rst_n_N32_11)        3.149  158.131 4.15e+03  165.432   1.7
+      REG_20 (reg_en_rst_n_N32_12)        3.123  158.150 4.15e+03  165.424   1.7
+      REG_19 (reg_en_rst_n_N32_13)        3.128  158.175 4.15e+03  165.453   1.7
+      REG_18 (reg_en_rst_n_N32_14)        3.133  158.194 4.15e+03  165.477   1.7
+      REG_17 (reg_en_rst_n_N32_15)        3.138  158.101 4.15e+03  165.390   1.7
+      REG_16 (reg_en_rst_n_N32_16)        3.135  158.138 4.15e+03  165.423   1.7
+      REG_15 (reg_en_rst_n_N32_17)        3.129  158.146 4.15e+03  165.425   1.7
+      REG_14 (reg_en_rst_n_N32_18)        3.150  158.091 4.15e+03  165.392   1.7
+      REG_13 (reg_en_rst_n_N32_19)        3.136  158.098 4.15e+03  165.386   1.7
+      REG_12 (reg_en_rst_n_N32_20)        3.126  158.101 4.15e+03  165.378   1.7
+      REG_11 (reg_en_rst_n_N32_21)        3.163  158.073 4.15e+03  165.387   1.7
+      REG_10 (reg_en_rst_n_N32_22)        3.141  158.099 4.15e+03  165.392   1.7
+      REG_9 (reg_en_rst_n_N32_23)         3.120  158.164 4.15e+03  165.435   1.7
+      REG_8 (reg_en_rst_n_N32_24)         3.143  157.997 4.15e+03  165.291   1.7
+      REG_7 (reg_en_rst_n_N32_25)         3.141  158.152 4.15e+03  165.444   1.7
+      REG_6 (reg_en_rst_n_N32_26)         3.142  158.150 4.15e+03  165.443   1.7
+      REG_5 (reg_en_rst_n_N32_27)         3.141  158.189 4.15e+03  165.480   1.7
+      REG_4 (reg_en_rst_n_N32_28)         3.118  158.170 4.15e+03  165.439   1.7
+      REG_3 (reg_en_rst_n_N32_29)         3.121  158.171 4.15e+03  165.443   1.7
+      REG_2 (reg_en_rst_n_N32_30)         3.127  158.144 4.15e+03  165.421   1.7
+      REG_1 (reg_en_rst_n_N32_0)          3.136  158.149 4.15e+03  165.436   1.7
+    i_MUX_INSTR (bN_2to1mux_N32_0)        3.365    6.111 1.03e+03   10.503   0.1
+  i_PIPE_I_IF_ID (PIPE_IF_ID)           167.525  505.084 1.32e+04  685.822   7.1
+    i_PIPE_instructions (reg_en_rst_n_falling_edge_N32_14)
+                                         62.861  174.261 4.58e+03  241.700   2.5
+    i_PIPE_current_PC (reg_en_rst_n_falling_edge_N32_15)
+                                         53.260  164.599 4.31e+03  222.173   2.3
+    i_PIPE_next_PC (reg_en_rst_n_falling_edge_N32_0)
+                                         51.405  166.225 4.32e+03  221.950   2.3
+  i_FETCH_UNIT (FETCH_UNIT)              66.808  175.493 1.41e+04  256.418   2.6
+    i_MUXPC (MUX_PC)                      2.013    2.461 2.00e+03    6.476   0.1
+    i_ADDER1 (ADDER2_NBIT_N32_0)          9.749    6.785 7.79e+03   24.326   0.3
+      add_1_root_add_33_2 (ADDER2_NBIT_N32_0_DW01_add_1)
+                                          9.749    6.785 7.79e+03   24.326   0.3
+    i_PC (PC)                            55.046  166.246 4.32e+03  225.615   2.3
+1

@@ -41,7 +41,7 @@ analyze -f vhdl -lib WORK ../src/RISC_V.vhd
 set power_preserve_rtl_hier_names true
 
 # elaboration
-elaborate RISC_V -arch BEHAVIORAL -lib WORK
+elaborate RISC_V -arch BEHAVIORAL -lib WORK > output_elaborate.txt
 
 # clock creation
 create_clock -name MY_CLK -period 0 {RISC_V_clk}

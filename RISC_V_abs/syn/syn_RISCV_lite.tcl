@@ -24,6 +24,7 @@ analyze -f vhdl -lib WORK ../src/XOR2_NBIT.vhd
 analyze -f vhdl -lib WORK ../src/COMPARATOR_LESSTHAN_NBIT.vhd
 analyze -f vhdl -lib WORK ../src/SHIFT_RIGHT_NBIT.vhd
 analyze -f vhdl -lib WORK ../src/SUBTRACTOR2_NBIT.vhd
+analyze -f vhdl -lib WORK ../src/ABSOLUTE_VALUE.vhd
 analyze -f vhdl -lib WORK ../src/ALU.vhd
 analyze -f vhdl -lib WORK ../src/ALU_CONTROL.vhd
 analyze -f vhdl -lib WORK ../src/CONTROL_UNIT.vhd
@@ -41,7 +42,7 @@ analyze -f vhdl -lib WORK ../src/RISC_V.vhd
 set power_preserve_rtl_hier_names true
 
 # elaboration
-elaborate RISC_V -arch BEHAVIORAL -lib WORK
+elaborate RISC_V -arch BEHAVIORAL -lib WORK > output_elaborate.txt
 
 # clock creation
 create_clock -name MY_CLK -period 0 {RISC_V_clk}

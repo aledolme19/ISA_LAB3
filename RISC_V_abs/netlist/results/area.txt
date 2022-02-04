@@ -1,0 +1,211 @@
+ 
+****************************************
+Report : area
+Design : RISC_V
+Version: O-2018.06-SP4
+Date   : Fri Feb  4 22:03:25 2022
+****************************************
+
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /software/dk/nangate45/synopsys/NangateOpenCellLibrary_typical_ecsm_nowlm.db)
+
+Number of ports:                         8493
+Number of nets:                         19755
+Number of cells:                        10027
+Number of combinational cells:           8304
+Number of sequential cells:              1589
+Number of macros/black boxes:               0
+Number of buf/inv:                       3089
+Number of references:                      11
+
+Combinational area:               9355.486031
+Buf/Inv area:                     1922.116002
+Noncombinational area:            8453.480273
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:                 17808.966304
+Total area:                 undefined
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area           Local cell area
+                                  -------------------  ---------------------------- 
+Hierarchical cell                 Absolute    Percent  Combi-     Noncombi-  Black-
+                                  Total       Total    national   national   boxes   Design
+--------------------------------  ----------  -------  ---------  ---------  ------  -------------------------------------------
+RISC_V                            17808.9663    100.0     5.8520     0.0000  0.0000  RISC_V
+i_DECODING_UNIT                   10626.9662     59.7     8.7780     0.0000  0.0000  DECODING_UNIT
+i_DECODING_UNIT/i_ADDER2            321.5940      1.8     0.0000     0.0000  0.0000  ADDER2_NBIT_N32_2
+i_DECODING_UNIT/i_ADDER2/add_1_root_add_33_2
+                                    321.5940      1.8   321.5940     0.0000  0.0000  ADDER2_NBIT_N32_2_DW01_add_1
+i_DECODING_UNIT/i_CONTROL_UNIT       24.7380      0.1    24.7380     0.0000  0.0000  CONTROL_UNIT
+i_DECODING_UNIT/i_HAZARD_UNIT        28.7280      0.2     8.5120     0.0000  0.0000  HAZARD_UNIT
+i_DECODING_UNIT/i_HAZARD_UNIT/i_COMP_RS1_RD
+                                     10.1080      0.1    10.1080     0.0000  0.0000  COMPARATOR_EQ_N5_0
+i_DECODING_UNIT/i_HAZARD_UNIT/i_COMP_RS2_RD
+                                     10.1080      0.1    10.1080     0.0000  0.0000  COMPARATOR_EQ_N5_7
+i_DECODING_UNIT/i_IMMEDIATE_UNIT     99.4840      0.6    99.4840     0.0000  0.0000  IMM_GEN
+i_DECODING_UNIT/i_MUX_CONTROL        30.0580      0.2    30.0580     0.0000  0.0000  bN_2to1mux_N15
+i_DECODING_UNIT/i_MUX_INSTR          62.7760      0.4    62.7760     0.0000  0.0000  bN_2to1mux_N32_0
+i_DECODING_UNIT/i_REGISTER_FILE   10050.8102     56.4  2250.0941     0.0000  0.0000  REGISTER_FILE_data_length32_address_length5
+i_DECODING_UNIT/i_REGISTER_FILE/REG_1
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_0
+i_DECODING_UNIT/i_REGISTER_FILE/REG_10
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_22
+i_DECODING_UNIT/i_REGISTER_FILE/REG_11
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_21
+i_DECODING_UNIT/i_REGISTER_FILE/REG_12
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_20
+i_DECODING_UNIT/i_REGISTER_FILE/REG_13
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_19
+i_DECODING_UNIT/i_REGISTER_FILE/REG_14
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_18
+i_DECODING_UNIT/i_REGISTER_FILE/REG_15
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_17
+i_DECODING_UNIT/i_REGISTER_FILE/REG_16
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_16
+i_DECODING_UNIT/i_REGISTER_FILE/REG_17
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_15
+i_DECODING_UNIT/i_REGISTER_FILE/REG_18
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_14
+i_DECODING_UNIT/i_REGISTER_FILE/REG_19
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_13
+i_DECODING_UNIT/i_REGISTER_FILE/REG_2
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_30
+i_DECODING_UNIT/i_REGISTER_FILE/REG_20
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_12
+i_DECODING_UNIT/i_REGISTER_FILE/REG_21
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_11
+i_DECODING_UNIT/i_REGISTER_FILE/REG_22
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_10
+i_DECODING_UNIT/i_REGISTER_FILE/REG_23
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_9
+i_DECODING_UNIT/i_REGISTER_FILE/REG_24
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_8
+i_DECODING_UNIT/i_REGISTER_FILE/REG_25
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_7
+i_DECODING_UNIT/i_REGISTER_FILE/REG_26
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_6
+i_DECODING_UNIT/i_REGISTER_FILE/REG_27
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_5
+i_DECODING_UNIT/i_REGISTER_FILE/REG_28
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_4
+i_DECODING_UNIT/i_REGISTER_FILE/REG_29
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_3
+i_DECODING_UNIT/i_REGISTER_FILE/REG_3
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_29
+i_DECODING_UNIT/i_REGISTER_FILE/REG_30
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_2
+i_DECODING_UNIT/i_REGISTER_FILE/REG_31
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_1
+i_DECODING_UNIT/i_REGISTER_FILE/REG_4
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_28
+i_DECODING_UNIT/i_REGISTER_FILE/REG_5
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_27
+i_DECODING_UNIT/i_REGISTER_FILE/REG_6
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_26
+i_DECODING_UNIT/i_REGISTER_FILE/REG_7
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_25
+i_DECODING_UNIT/i_REGISTER_FILE/REG_8
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_24
+i_DECODING_UNIT/i_REGISTER_FILE/REG_9
+                                    251.6360      1.4    81.3960   170.2400  0.0000  reg_en_rst_n_N32_23
+i_EXECUTION_UNIT                   2017.6100     11.3     0.0000     0.0000  0.0000  EXECUTION_UNIT
+i_EXECUTION_UNIT/i_ALU             1445.9760      8.1   241.2620     0.0000  0.0000  ALU_N32
+i_EXECUTION_UNIT/i_ALU/i_ADD        311.4860      1.7     0.0000     0.0000  0.0000  ADDER2_NBIT_N32_1
+i_EXECUTION_UNIT/i_ALU/i_ADD/add_1_root_add_33_2
+                                    311.4860      1.7   311.4860     0.0000  0.0000  ADDER2_NBIT_N32_1_DW01_add_2
+i_EXECUTION_UNIT/i_ALU/i_AND         34.0480      0.2    34.0480     0.0000  0.0000  AND2_NBIT_N32
+i_EXECUTION_UNIT/i_ALU/i_SLT        121.0300      0.7     0.0000     0.0000  0.0000  COMPARATOR_LESSTHAN_NBIT_N32
+i_EXECUTION_UNIT/i_ALU/i_SLT/lt_20
+                                    121.0300      0.7   121.0300     0.0000  0.0000  COMPARATOR_LESSTHAN_NBIT_N32_DW_cmp_1
+i_EXECUTION_UNIT/i_ALU/i_SRAI       409.6400      2.3   409.6400     0.0000  0.0000  SHIFT_RIGHT_NBIT_N32
+i_EXECUTION_UNIT/i_ALU/i_XOR         51.0720      0.3    51.0720     0.0000  0.0000  XOR2_NBIT_N32
+i_EXECUTION_UNIT/i_ALU/i_ZERO        65.1700      0.4    65.1700     0.0000  0.0000  COMPARATOR_EQUAL_NBIT_N32
+i_EXECUTION_UNIT/i_ALU/i_absolute   212.2680      1.2    67.0320     0.0000  0.0000  ABSOLUTE_VALUE_N32
+i_EXECUTION_UNIT/i_ALU/i_absolute/sub_abs_17
+                                    145.2360      0.8   145.2360     0.0000  0.0000  ABSOLUTE_VALUE_N32_DW01_sub_1
+i_EXECUTION_UNIT/i_ALU_CONTROL       19.4180      0.1    19.4180     0.0000  0.0000  ALU_CONTROL
+i_EXECUTION_UNIT/i_FORWARDING_UNIT
+                                     86.4500      0.5    15.6940     0.0000  0.0000  FORWARDING_UNIT
+i_EXECUTION_UNIT/i_FORWARDING_UNIT/i_COMP_ID_EX_RS1_EX_MEM_RD
+                                     10.1080      0.1    10.1080     0.0000  0.0000  COMPARATOR_EQ_N5_6
+i_EXECUTION_UNIT/i_FORWARDING_UNIT/i_COMP_ID_EX_RS1_MEM_WB_RD
+                                     10.1080      0.1    10.1080     0.0000  0.0000  COMPARATOR_EQ_N5_5
+i_EXECUTION_UNIT/i_FORWARDING_UNIT/i_COMP_ID_EX_RS2_EX_MEM_RD
+                                     10.1080      0.1    10.1080     0.0000  0.0000  COMPARATOR_EQ_N5_4
+i_EXECUTION_UNIT/i_FORWARDING_UNIT/i_COMP_ID_EX_RS2_MEM_WB_RD
+                                     10.9060      0.1    10.9060     0.0000  0.0000  COMPARATOR_EQ_N5_3
+i_EXECUTION_UNIT/i_FORWARDING_UNIT/i_isZERO_EX_MEM_RD
+                                     18.8860      0.1    18.8860     0.0000  0.0000  COMPARATOR_EQ_N5_2
+i_EXECUTION_UNIT/i_FORWARDING_UNIT/i_isZERO_MEM_WB_RD
+                                     10.6400      0.1    10.6400     0.0000  0.0000  COMPARATOR_EQ_N5_1
+i_EXECUTION_UNIT/i_MUX2             117.5720      0.7   117.5720     0.0000  0.0000  MUX_AUIPC_LUI
+i_EXECUTION_UNIT/i_MUX3              72.0860      0.4    72.0860     0.0000  0.0000  bN_2to1mux_N32_1
+i_EXECUTION_UNIT/i_MUX_A            136.7240      0.8   136.7240     0.0000  0.0000  MUX_A_B_0
+i_EXECUTION_UNIT/i_MUX_B            139.3840      0.8   139.3840     0.0000  0.0000  MUX_A_B_1
+i_FETCH_UNIT                        637.8680      3.6     0.0000     0.0000  0.0000  FETCH_UNIT
+i_FETCH_UNIT/i_ADDER1               288.6100      1.6     0.0000     0.0000  0.0000  ADDER2_NBIT_N32_0
+i_FETCH_UNIT/i_ADDER1/add_1_root_add_33_2
+                                    288.6100      1.6   288.6100     0.0000  0.0000  ADDER2_NBIT_N32_0_DW01_add_1
+i_FETCH_UNIT/i_MUXPC                 97.3560      0.5    97.3560     0.0000  0.0000  MUX_PC
+i_FETCH_UNIT/i_PC                   251.9020      1.4    81.6620   170.2400  0.0000  PC
+i_MEMORY_UNIT                         0.0000      0.0     0.0000     0.0000  0.0000  MEMORY_UNIT
+i_PIPE_III_EX_MEM                  1098.5800      6.2     0.0000     0.0000  0.0000  PIPE_EX_MEM
+i_PIPE_III_EX_MEM/i_FF_ALU_Zero       8.2460      0.0     2.9260     5.3200  0.0000  flipflop_en_rst_n_falling_edge_9
+i_PIPE_III_EX_MEM/i_FF_Branch         8.2460      0.0     2.9260     5.3200  0.0000  flipflop_en_rst_n_falling_edge_7
+i_PIPE_III_EX_MEM/i_FF_Jump           8.2460      0.0     2.9260     5.3200  0.0000  flipflop_en_rst_n_falling_edge_5
+i_PIPE_III_EX_MEM/i_FF_MemRead        8.2460      0.0     2.9260     5.3200  0.0000  flipflop_en_rst_n_falling_edge_4
+i_PIPE_III_EX_MEM/i_FF_MemWrite       8.2460      0.0     2.9260     5.3200  0.0000  flipflop_en_rst_n_falling_edge_6
+i_PIPE_III_EX_MEM/i_FF_RegWrite       8.2460      0.0     2.9260     5.3200  0.0000  flipflop_en_rst_n_falling_edge_8
+i_PIPE_III_EX_MEM/i_Reg_ADDER_2     249.7740      1.4    79.5340   170.2400  0.0000  reg_en_rst_n_falling_edge_N32_7
+i_PIPE_III_EX_MEM/i_Reg_ALU_Result
+                                    248.4440      1.4    78.2040   170.2400  0.0000  reg_en_rst_n_falling_edge_N32_5
+i_PIPE_III_EX_MEM/i_Reg_MemToReg     15.9600      0.1     5.3200    10.6400  0.0000  reg_en_rst_n_falling_edge_N2_2
+i_PIPE_III_EX_MEM/i_Reg_NextPC      249.7740      1.4    79.5340   170.2400  0.0000  reg_en_rst_n_falling_edge_N32_6
+i_PIPE_III_EX_MEM/i_Reg_RD           39.1020      0.2    12.5020    26.6000  0.0000  reg_en_rst_n_falling_edge_N5_2
+i_PIPE_III_EX_MEM/i_Reg_ReadData2_out
+                                    246.0500      1.4    75.8100   170.2400  0.0000  reg_en_rst_n_falling_edge_N32_4
+i_PIPE_II_ID_EX                    1738.5760      9.8     1.0640     0.0000  0.0000  PIPE_ID_EX
+i_PIPE_II_ID_EX/i_FF_ALUScr           8.2460      0.0     2.9260     5.3200  0.0000  flipflop_en_rst_n_falling_edge_12
+i_PIPE_II_ID_EX/i_FF_AUIP             8.2460      0.0     2.9260     5.3200  0.0000  flipflop_en_rst_n_falling_edge_14
+i_PIPE_II_ID_EX/i_FF_Branch           8.2460      0.0     2.9260     5.3200  0.0000  flipflop_en_rst_n_falling_edge_13
+i_PIPE_II_ID_EX/i_FF_Jump             8.2460      0.0     2.9260     5.3200  0.0000  flipflop_en_rst_n_falling_edge_10
+i_PIPE_II_ID_EX/i_FF_LUI              8.2460      0.0     2.9260     5.3200  0.0000  flipflop_en_rst_n_falling_edge_0
+i_PIPE_II_ID_EX/i_FF_MemRead          8.2460      0.0     2.9260     5.3200  0.0000  flipflop_en_rst_n_falling_edge_15
+i_PIPE_II_ID_EX/i_FF_MemWrite         8.2460      0.0     2.9260     5.3200  0.0000  flipflop_en_rst_n_falling_edge_11
+i_PIPE_II_ID_EX/i_FF_RegWrite         8.2460      0.0     2.9260     5.3200  0.0000  flipflop_en_rst_n_falling_edge_16
+i_PIPE_II_ID_EX/i_Reg_ADDER_2       249.7740      1.4    79.5340   170.2400  0.0000  reg_en_rst_n_falling_edge_N32_12
+i_PIPE_II_ID_EX/i_Reg_Current_PC    249.7740      1.4    79.5340   170.2400  0.0000  reg_en_rst_n_falling_edge_N32_11
+i_PIPE_II_ID_EX/i_Reg_Next_PC       249.7740      1.4    79.5340   170.2400  0.0000  reg_en_rst_n_falling_edge_N32_13
+i_PIPE_II_ID_EX/i_Reg_RS1            39.1020      0.2    12.5020    26.6000  0.0000  reg_en_rst_n_falling_edge_N5_0
+i_PIPE_II_ID_EX/i_Reg_RS2            39.1020      0.2    12.5020    26.6000  0.0000  reg_en_rst_n_falling_edge_N5_4
+i_PIPE_II_ID_EX/i_Reg_Read_Data1    249.7740      1.4    79.5340   170.2400  0.0000  reg_en_rst_n_falling_edge_N32_10
+i_PIPE_II_ID_EX/i_reg_ALUOp          15.9600      0.1     5.3200    10.6400  0.0000  reg_en_rst_n_falling_edge_N2_0
+i_PIPE_II_ID_EX/i_reg_Funct3         23.6740      0.1     7.7140    15.9600  0.0000  reg_en_rst_n_falling_edge_N3
+i_PIPE_II_ID_EX/i_reg_Immediate     249.7740      1.4    79.5340   170.2400  0.0000  reg_en_rst_n_falling_edge_N32_8
+i_PIPE_II_ID_EX/i_reg_MemtoReg       15.9600      0.1     5.3200    10.6400  0.0000  reg_en_rst_n_falling_edge_N2_3
+i_PIPE_II_ID_EX/i_reg_RD             39.1020      0.2    12.5020    26.6000  0.0000  reg_en_rst_n_falling_edge_N5_3
+i_PIPE_II_ID_EX/i_reg_Read_Data2    249.7740      1.4    79.5340   170.2400  0.0000  reg_en_rst_n_falling_edge_N32_9
+i_PIPE_IV_MEM_WB                    829.6540      4.7     0.0000     0.0000  0.0000  PIPE_MEM_WB
+i_PIPE_IV_MEM_WB/i_FF_Jump            8.2460      0.0     2.9260     5.3200  0.0000  flipflop_en_rst_n_falling_edge_3
+i_PIPE_IV_MEM_WB/i_FF_PCScr           8.2460      0.0     2.9260     5.3200  0.0000  flipflop_en_rst_n_falling_edge_1
+i_PIPE_IV_MEM_WB/i_FF_RegWrite        8.2460      0.0     2.9260     5.3200  0.0000  flipflop_en_rst_n_falling_edge_2
+i_PIPE_IV_MEM_WB/i_Reg_ALUResult    249.7740      1.4    79.5340   170.2400  0.0000  reg_en_rst_n_falling_edge_N32_2
+i_PIPE_IV_MEM_WB/i_Reg_MemtoReg      15.9600      0.1     5.3200    10.6400  0.0000  reg_en_rst_n_falling_edge_N2_1
+i_PIPE_IV_MEM_WB/i_Reg_Next_PC      249.7740      1.4    79.5340   170.2400  0.0000  reg_en_rst_n_falling_edge_N32_3
+i_PIPE_IV_MEM_WB/i_Reg_RD            39.6340      0.2    13.0340    26.6000  0.0000  reg_en_rst_n_falling_edge_N5_1
+i_PIPE_IV_MEM_WB/i_Reg_ReadData     249.7740      1.4    79.5340   170.2400  0.0000  reg_en_rst_n_falling_edge_N32_1
+i_PIPE_I_IF_ID                      756.5040      4.2     0.0000     0.0000  0.0000  PIPE_IF_ID
+i_PIPE_I_IF_ID/i_PIPE_current_PC    252.1680      1.4    81.9280   170.2400  0.0000  reg_en_rst_n_falling_edge_N32_15
+i_PIPE_I_IF_ID/i_PIPE_instructions
+                                    252.1680      1.4    81.9280   170.2400  0.0000  reg_en_rst_n_falling_edge_N32_14
+i_PIPE_I_IF_ID/i_PIPE_next_PC       252.1680      1.4    81.9280   170.2400  0.0000  reg_en_rst_n_falling_edge_N32_0
+i_WRITE_BACK_UNIT                    97.3560      0.5    97.3560     0.0000  0.0000  WRITE_BACK_UNIT
+--------------------------------  ----------  -------  ---------  ---------  ------  -------------------------------------------
+Total                                                  9355.4860  8453.4803  0.0000
+
+1
