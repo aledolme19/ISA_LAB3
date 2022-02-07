@@ -66,7 +66,8 @@ write -hierarchy -format ddc -output ../netlist/ddc_files/RISC_V.ddc
 # verilog netlist generation
 ungroup -all -flatten
 change_names -hierarchy -rules verilog
-write -f verilog -hierarchy -output ../netlist/RISC_V.v
+write -f verilog -hierarchy -output ../netlist/syn/RISC_V.v
+write_sdc ../netlist/syn/RISC_V.sdc
 
 # report
 report_power > ../netlist/results/power.txt
