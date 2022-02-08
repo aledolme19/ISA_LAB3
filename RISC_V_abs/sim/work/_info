@@ -1,101 +1,110 @@
 m255
+K3
 13
 cModel Technology
-d/home/isa04_2021_2022/ISA_LAB3/RISC_V_abs/sim
+Z0 d/home/isa04_2021_2022/francesco/ISA_LAB3/RISC_V_abs/sim
 T_opt
-Va7U]>FX9K0N7^^f>hl9:`3
-06 9 4 ./work tb_risc_v test 1
-o-quiet -auto_acc_if_foreign -work work -L /software/dk/nangate45/verilog/msim6.2g
-tExplicit 1
-OE;O;6.2g;35
+Vg7^=kUfAl4eH6i_D^An]>3
+04 9 4 work tb_risc_v test 1
+Z1 =1-52540097797c-6202a601-3846d-72c5
+Z2 o-quiet -auto_acc_if_foreign -work work -L /software/dk/nangate45/verilog/msim6.2g
+Z3 n@_opt
+Z4 OL;O;6.5c;42
 Edata_memory
-w1644004486
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-8../tb/DATA_MEMORY.vhd
-F../tb/DATA_MEMORY.vhd
+Z5 w1644260320
+Z6 DPx4 ieee 11 numeric_std 0 22 =NSdli^?T5OD8;4F<blj<3
+Z7 DPx4 ieee 14 std_logic_1164 0 22 GH1=`jDDBJ=`LM;:Ak`kf2
+Z8 8../tb/DATA_MEMORY.vhd
+Z9 F../tb/DATA_MEMORY.vhd
 l0
 L5
-V1a>B?V^PM=V^CL3eS;[8a1
-OE;C;6.2g;35
+Z10 V1a>B?V^PM=V^CL3eS;[8a1
+Z11 OL;C;6.5c;42
 31
-o-93 -work work
-tExplicit 1
+Z12 o-93 -work work
+Z13 tExplicit 1
+Z14 !s100 MiOG[XWJc@n_lJZhU`g@I0
 Abehavioral
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-DE work data_memory 1a>B?V^PM=V^CL3eS;[8a1
+R6
+R7
+Z15 DEx4 work 11 data_memory 0 22 1a>B?V^PM=V^CL3eS;[8a1
 l126
 L112
-VGj2[]^;5g04PQUBiJiNZk0
-OE;C;6.2g;35
+Z16 VGj2[]^;5g04PQUBiJiNZk0
+R11
 31
-M2 ieee std_logic_1164
-M1 ieee numeric_std
-o-93 -work work
-tExplicit 1
+Z17 Mx2 4 ieee 14 std_logic_1164
+Z18 Mx1 4 ieee 11 numeric_std
+R12
+R13
+Z19 !s100 K5?=U6fOfWA^:i@7@]R6Z0
 Einstruction_memory
-w1644004485
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-8../tb/INSTRUCTION_MEMORY.vhd
-F../tb/INSTRUCTION_MEMORY.vhd
+R5
+R6
+R7
+Z20 8../tb/INSTRUCTION_MEMORY.vhd
+Z21 F../tb/INSTRUCTION_MEMORY.vhd
 l0
 L5
-V`@07R4@52Bcl^WQN9V5163
-OE;C;6.2g;35
+Z22 V`@07R4@52Bcl^WQN9V5163
+R11
 31
-o-93 -work work
-tExplicit 1
+R12
+R13
+Z23 !s100 Tcg8S4E5icII;@nFXni9]3
 Abehavioral
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-DE work instruction_memory `@07R4@52Bcl^WQN9V5163
+R6
+R7
+Z24 DEx4 work 18 instruction_memory 0 22 `@07R4@52Bcl^WQN9V5163
 l38
 L12
-V[HRMYj^^=GMX8M^A?;cgZ3
-OE;C;6.2g;35
+Z25 V[HRMYj^^=GMX8M^A?;cgZ3
+R11
 31
-M2 ieee std_logic_1164
-M1 ieee numeric_std
-o-93 -work work
-tExplicit 1
+R17
+R18
+R12
+R13
+Z26 !s100 4OG@?2hbOllGU?[dlCP:U3
 vRISC_V
-IdNOS6gOUN]>a^383hXoL00
-V9Q9TIZaZdQRaAMG]W=V6o2
-w1644008650
-8../netlist/RISC_V.v
-F../netlist/RISC_V.v
-L0 8
-V9Q9TIZaZdQRaAMG]W=V6o2
-OE;L;6.2g;35
+Z27 IM20=UhFnGJz5M9WnA`a160
+Z28 V9Q9TIZaZdQRaAMG]W=V6o2
+Z29 w1644339251
+Z30 8../netlist/innovus/RISC_V.v
+Z31 F../netlist/innovus/RISC_V.v
+L0 15
+Z32 OL;L;6.5c;42
 r1
 31
-o-work work
-n@r@i@s@c_@v
+Z33 o-work work -L mtiAvm -L mtiOvm -L mtiUPF
+Z34 n@r@i@s@c_@v
+Z35 !s100 FBH=2hI3jR]IkW84[?AD;3
+!s85 0
 Etb_risc_v
-w1644003087
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-8../tb/tb_RISC_V.vhd
-F../tb/tb_RISC_V.vhd
+R5
+R6
+R7
+Z36 8../tb/tb_RISC_V.vhd
+Z37 F../tb/tb_RISC_V.vhd
 l0
 L5
-VYLL;odIoR6iJ83N4mn:<K0
-OE;C;6.2g;35
+Z38 VYLL;odIoR6iJ83N4mn:<K0
+R11
 31
-o-93 -work work
-tExplicit 1
+R12
+R13
+Z39 !s100 iY17A@n>^5MMM4BV0zCcQ3
 Atest
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-DE work tb_risc_v YLL;odIoR6iJ83N4mn:<K0
+R6
+R7
+Z40 DEx4 work 9 tb_risc_v 0 22 YLL;odIoR6iJ83N4mn:<K0
 l54
 L8
-V9;iD75[5Z:n;HKiO>DMhQ2
-OE;C;6.2g;35
+Z41 V9;iD75[5Z:n;HKiO>DMhQ2
+R11
 31
-M2 ieee std_logic_1164
-M1 ieee numeric_std
-o-93 -work work
-tExplicit 1
+R17
+R18
+R12
+R13
+Z42 !s100 BCN^bVBleKgeo<CD@PaQc0

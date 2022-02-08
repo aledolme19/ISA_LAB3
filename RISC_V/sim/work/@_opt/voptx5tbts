@@ -1,0 +1,113 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/home/isa04_2021_2022/francesco/ISA_LAB3/RISC_V/sim
+T_opt
+Z1 VH8aLW>:LCF_RQ8LHcYE2m0
+Z2 04 9 4 work tb_risc_v test 1
+Z3 =1-52540097797c-6202a4a9-e4b00-4b1c
+Z4 o-quiet -auto_acc_if_foreign -work work -L /software/dk/nangate45/verilog/msim6.2g
+Z5 n@_opt
+Z6 OL;O;6.5c;42
+Edata_memory
+Z7 w1644260324
+Z8 DPx4 ieee 11 numeric_std 0 22 =NSdli^?T5OD8;4F<blj<3
+Z9 DPx4 ieee 14 std_logic_1164 0 22 GH1=`jDDBJ=`LM;:Ak`kf2
+Z10 8../tb/DATA_MEMORY.vhd
+Z11 F../tb/DATA_MEMORY.vhd
+l0
+L5
+Z12 V1a>B?V^PM=V^CL3eS;[8a1
+Z13 OL;C;6.5c;42
+31
+Z14 o-93 -work work
+Z15 tExplicit 1
+Z16 !s100 MiOG[XWJc@n_lJZhU`g@I0
+Abehavioral
+R8
+R9
+Z17 DEx4 work 11 data_memory 0 22 1a>B?V^PM=V^CL3eS;[8a1
+l126
+L112
+Z18 VGj2[]^;5g04PQUBiJiNZk0
+R13
+31
+Z19 Mx2 4 ieee 14 std_logic_1164
+Z20 Mx1 4 ieee 11 numeric_std
+R14
+R15
+Z21 !s100 K5?=U6fOfWA^:i@7@]R6Z0
+Einstruction_memory
+R7
+R8
+R9
+Z22 8../tb/INSTRUCTION_MEMORY.vhd
+Z23 F../tb/INSTRUCTION_MEMORY.vhd
+l0
+L5
+Z24 V`@07R4@52Bcl^WQN9V5163
+R13
+31
+R14
+R15
+Z25 !s100 Tcg8S4E5icII;@nFXni9]3
+Abehavioral
+R8
+R9
+Z26 DEx4 work 18 instruction_memory 0 22 `@07R4@52Bcl^WQN9V5163
+l41
+L12
+Z27 VKTG8mPRDz?X@5^hf2mVG40
+R13
+31
+R19
+R20
+R14
+R15
+Z28 !s100 8:cNj7a^I`zQYkDIP:?UK1
+vRISC_V
+Z29 w1644339733
+Z30 I_z2Z]XWaY>19J9Mko_dIN2
+Z31 V9Q9TIZaZdQRaAMG]W=V6o2
+Z32 8../netlist/innovus/RISC_V.v
+Z33 F../netlist/innovus/RISC_V.v
+L0 15
+Z34 OL;L;6.5c;42
+r1
+31
+Z35 o-work work -L mtiAvm -L mtiOvm -L mtiUPF
+Z36 n@r@i@s@c_@v
+Z37 !s100 T=a4R]MK?GBoG4T?V7C5S2
+!s85 0
+Etb_risc_v
+R7
+Z38 DPx17 __model_tech/ieee 11 numeric_std 0 22 =NSdli^?T5OD8;4F<blj<3
+Z39 DPx17 __model_tech/ieee 14 std_logic_1164 0 22 GH1=`jDDBJ=`LM;:Ak`kf2
+31
+Z40 8../tb/tb_RISC_V.vhd
+Z41 F../tb/tb_RISC_V.vhd
+l0
+L5
+Z42 VYLL;odIoR6iJ83N4mn:<K0
+R13
+R14
+R15
+Z43 !s100 iY17A@n>^5MMM4BV0zCcQ3
+Atest
+DEx56 /home/isa04_2021_2022/francesco/ISA_LAB3/RISC_V/sim/work 6 risc_v 0 22 9Q9TIZaZdQRaAMG]W=V6o2
+DEx56 /home/isa04_2021_2022/francesco/ISA_LAB3/RISC_V/sim/work 11 data_memory 0 22 1a>B?V^PM=V^CL3eS;[8a1
+DEx56 /home/isa04_2021_2022/francesco/ISA_LAB3/RISC_V/sim/work 18 instruction_memory 0 22 `@07R4@52Bcl^WQN9V5163
+R38
+R39
+DEx56 /home/isa04_2021_2022/francesco/ISA_LAB3/RISC_V/sim/work 9 tb_risc_v 0 22 YLL;odIoR6iJ83N4mn:<K0
+31
+Mx2 17 __model_tech/ieee 14 std_logic_1164
+Mx1 17 __model_tech/ieee 11 numeric_std
+l54
+L8
+Z44 V9;iD75[5Z:n;HKiO>DMhQ2
+R13
+R14
+R15
+Z45 !s100 BCN^bVBleKgeo<CD@PaQc0

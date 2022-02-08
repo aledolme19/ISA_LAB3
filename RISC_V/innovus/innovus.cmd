@@ -1,7 +1,7 @@
 #######################################################
 #                                                     
 #  Innovus Command Logging File                     
-#  Created on Tue Feb  8 00:55:45 2022                
+#  Created on Tue Feb  8 17:56:40 2022                
 #                                                     
 #######################################################
 
@@ -104,3 +104,4 @@ saveNetlist ../netlist/innovus/RISC_V.v
 all_hold_analysis_views 
 all_setup_analysis_views 
 write_sdf  -ideal_clock_network ../netlist/innovus/timing.sdf
+dumpToGIF snapshot.gif

@@ -104,7 +104,7 @@ set_load -pin_load 3.40189 [get_ports {RISC_V_DATA_data_memory[3]}]
 set_load -pin_load 3.40189 [get_ports {RISC_V_DATA_data_memory[2]}]
 set_load -pin_load 3.40189 [get_ports {RISC_V_DATA_data_memory[1]}]
 set_load -pin_load 3.40189 [get_ports {RISC_V_DATA_data_memory[0]}]
-create_clock [get_ports RISC_V_clk]  -name MY_CLK  -period 1.6 -waveform {0 0.8}
+create_clock [get_ports RISC_V_clk]  -name MY_CLK  -period 3 -waveform {0 1.5}
 set_clock_uncertainty 0.07  [get_clocks MY_CLK]
 set_input_delay -clock MY_CLK  -max 0.5  [get_ports RISC_V_rst_n]
 set_input_delay -clock MY_CLK  -max 0.5  [get_ports {RISC_V_instruction[31]}]
